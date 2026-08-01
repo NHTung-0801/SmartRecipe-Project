@@ -1,0 +1,28 @@
+# Bỏ qua 2 thư mục con vì chúng đã là 2 repo Git độc lập
+smartrecipe-backend/
+smartrecipe-frontend/
+
+# Bỏ qua các file tạm thời, file mô tả không cần up lên
+extract.py
+desc.txt
+db.txt
+*.docx
+*.zip
+
+# IDEs và Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Hệ điều hành (OS generated files)
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Log files
+*.log
