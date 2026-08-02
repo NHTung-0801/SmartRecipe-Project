@@ -12,10 +12,10 @@
 | Frontend Boilerplate | ✅ Hoàn thành | Vite + React, Tailwind, Axios, Zustand, TanStack Query, React Hook Form + Zod |
 | Docker & Database | ✅ Hoàn thành | `docker-compose.yml` (MySQL 8 + Redis 7), DB đã khởi tạo thành công 17 bảng |
 | Backend `application.yaml` | ✅ Hoàn thành | Kết nối MySQL `localhost:3306`, Redis `localhost:6379` |
-| **Entity classes (Backend)** | ❌ Chưa bắt đầu | |
-| **Security & JWT (Backend)** | ❌ Chưa bắt đầu | |
-| **API Endpoints (Backend)** | ❌ Chưa bắt đầu | |
-| **Giao diện (Frontend)** | ❌ Chưa bắt đầu | |
+| **Entity classes (Backend)** | ✅ Hoàn thành | Đã ánh xạ 17 entities |
+| **Security & JWT (Backend)** | ✅ Hoàn thành | Đã thiết lập hoàn chỉnh |
+| **API Endpoints (Backend)** | ✅ Đang thực hiện | Hoàn thành Auth, Profile & Master Data (Sprint 1, 2) |
+| **Giao diện (Frontend)** | ✅ Đang thực hiện | Hoàn thành Auth, Profile & Master Data (Sprint 1, 2) |
 
 ---
 
@@ -29,30 +29,30 @@
 **Mục tiêu:** Xây dựng toàn bộ Entity, cấu trúc package, Security JWT, và module Đăng ký/Đăng nhập.
 
 #### Backend (ưu tiên cao nhất)
-- [ ] **Tạo cấu trúc package:** `entity`, `repository`, `service`, `controller`, `dto`, `exception`, `config`, `security`
-- [ ] **Tạo 17 Entity classes** ánh xạ từ `init_database.sql`:
+- [x] **Tạo cấu trúc package:** `entity`, `repository`, `service`, `controller`, `dto`, `exception`, `config`, `security`
+- [x] **Tạo 17 Entity classes** ánh xạ từ `init_database.sql`:
   - `User`, `Aisle`, `Ingredient`, `Recipe`, `RecipeStep`, `RecipeIngredient`, `Tag`, `RecipeTag`
   - `UserPantry`, `GroceryList`, `GroceryItem`, `GroceryListRecipe`, `UnitConversion`
   - `CookingJournal`, `AiSuggestionLog`, `RecipeLike`, `RecipeComment`
-- [ ] **Tạo Enum classes:** `Role` (ADMIN, USER), `RecipeStatus` (PRIVATE, PUBLIC), `Difficulty` (EASY, MEDIUM, HARD), `GroceryListStatus` (ACTIVE, COMPLETED), `AiSuggestionType` (ZERO_WASTE, FEASIBLE_FINDER)
-- [ ] **Tạo cấu trúc Response chuẩn:** `ApiResponse<T>` wrapper (success, message, data, timestamp)
-- [ ] **Tạo Exception handling:** `GlobalExceptionHandler`, `ResourceNotFoundException`, `UnauthorizedException`, `DuplicateResourceException`
-- [ ] **Cấu hình Security:**
+- [x] **Tạo Enum classes:** `Role` (ADMIN, USER), `RecipeStatus` (PRIVATE, PUBLIC), `Difficulty` (EASY, MEDIUM, HARD), `GroceryListStatus` (ACTIVE, COMPLETED), `AiSuggestionType` (ZERO_WASTE, FEASIBLE_FINDER)
+- [x] **Tạo cấu trúc Response chuẩn:** `ApiResponse<T>` wrapper (success, message, data, timestamp)
+- [x] **Tạo Exception handling:** `GlobalExceptionHandler`, `ResourceNotFoundException`, `UnauthorizedException`, `DuplicateResourceException`
+- [x] **Cấu hình Security:**
   - `SecurityConfig.java` (SecurityFilterChain, CORS, CSRF off, stateless session)
   - `JwtProvider.java` (tạo/xác minh Access Token & Refresh Token)
   - `JwtAuthFilter.java` (OncePerRequestFilter)
   - `UserDetailsServiceImpl.java` (load user từ DB)
-- [ ] **API Auth (Module đầu tiên):**
+- [x] **API Auth (Module đầu tiên):**
   - `AuthController`: `POST /api/v1/auth/register`, `POST /api/v1/auth/login`, `POST /api/v1/auth/refresh`, `POST /api/v1/auth/logout`
   - `AuthService`: logic đăng ký (BCrypt), đăng nhập (kiểm tra & trả JWT), refresh token (Redis), logout (blacklist)
   - DTOs: `RegisterRequest`, `LoginRequest`, `RefreshTokenRequest`, `AuthResponse`
   - Repositories: `UserRepository`
 
 #### Frontend (sau khi Backend Auth xong)
-- [ ] Tạo trang `LoginPage.jsx` và `RegisterPage.jsx`
-- [ ] Tích hợp gọi API Auth qua `authService.js`
-- [ ] Cấu hình Protected Route (chuyển hướng về Login nếu chưa đăng nhập)
-- [ ] Tạo `Header.jsx` (hiển thị avatar/username, nút Đăng xuất)
+- [x] Tạo trang `LoginPage.jsx` và `RegisterPage.jsx`
+- [x] Tích hợp gọi API Auth qua `authService.js`
+- [x] Cấu hình Protected Route (chuyển hướng về Login nếu chưa đăng nhập)
+- [x] Tạo `Header.jsx` (hiển thị avatar/username, nút Đăng xuất)
 
 ---
 
@@ -60,15 +60,15 @@
 **Mục tiêu:** API quản lý profile + CRUD dữ liệu từ điển (nguyên liệu, quầy hàng, thẻ tag).
 
 #### Backend
-- [ ] **API Users:** `GET /users/me`, `PUT /users/me`, `POST /users/me/avatar`, `GET /users/{id}`
-- [ ] **API Ingredients:** `GET /ingredients`, `GET /ingredients/search`, `POST /ingredients` (ADMIN)
-- [ ] **API Aisles, Tags, UnitConversions:** CRUD cơ bản
-- [ ] **Redis Cache:** Cache danh sách `ingredients`, `aisles`, `tags`, `unit_conversions`
-- [ ] **Cloudinary Integration:** Upload ảnh avatar
+- [x] **API Users:** `GET /users/me`, `PUT /users/me`, `POST /users/me/avatar`, `GET /users/{id}`
+- [x] **API Ingredients:** `GET /ingredients`, `GET /ingredients/search`, `POST /ingredients` (ADMIN)
+- [x] **API Aisles, Tags, UnitConversions:** CRUD cơ bản
+- [x] **Redis Cache:** Cache danh sách `ingredients`, `aisles`, `tags`, `unit_conversions`
+- [x] **Cloudinary Integration:** Upload ảnh avatar
 
 #### Frontend
-- [ ] Trang `ProfilePage.jsx` (xem/sửa thông tin cá nhân, upload avatar)
-- [ ] Component Autocomplete tìm kiếm nguyên liệu
+- [x] Trang `ProfilePage.jsx` (xem/sửa thông tin cá nhân, upload avatar)
+- [x] Component Autocomplete tìm kiếm nguyên liệu
 
 ---
 
