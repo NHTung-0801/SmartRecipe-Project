@@ -1,6 +1,7 @@
 # Bỏ qua 2 thư mục con vì chúng đã là 2 repo Git độc lập
 smartrecipe-backend/
 smartrecipe-frontend/
+stitch_smart_recipe_platform/
 
 # Bỏ qua các file tạm thời, file mô tả không cần up lên
 extract.py

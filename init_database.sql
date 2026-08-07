@@ -95,6 +95,7 @@ CREATE TABLE IF NOT EXISTS `user_pantry` (
     `ingredient_id` BIGINT NOT NULL,
     `quantity_available` DECIMAL(10,2) NOT NULL,
     `low_stock_threshold` DECIMAL(10,2) NULL,
+    `expiry_date` DATE NULL,
     UNIQUE(`user_id`, `ingredient_id`),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
     FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients`(`id`) ON DELETE CASCADE
