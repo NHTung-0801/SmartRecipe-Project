@@ -1,8 +1,8 @@
 # 🚀 SPRINT 4 — KẾ HOẠCH CHI TIẾT (ĐÃ CẬP NHẬT)
 
-> **Ngày soạn:** 08/04/2026 — **Cập nhật:** 07/08/2026
+> **Ngày soạn:** 08/04/2026 — **Cập nhật:** 10/08/2026
 > **Tổng thời gian dự kiến:** 3-4 tuần
-> **Trạng thái hiện tại:** Sprint 1, 2, 3 đã hoàn thành. Entity Pantry & Grocery đã có sẵn. Bắt đầu xây dựng các layer còn lại.
+> **Trạng thái hiện tại:** Pantry MVP đã hoàn thiện theo mô hình lot + base unit; Grocery chưa triển khai. Bộ 9 test nghiệp vụ Pantry/đơn vị đang chạy xanh.
 
 ---
 
@@ -16,6 +16,17 @@ Hoàn thiện 2 module cốt lõi giúp hệ thống trở nên "thông minh":
 | 2 | **Grocery (Đi chợ thông minh)** | 🟡 TRUNG BÌNH | Danh sách đi chợ, gộp nhóm theo gian hàng, đồng bộ với Pantry |
 
 ---
+
+## ✅ CẬP NHẬT KIẾN TRÚC PANTRY (PHƯƠNG ÁN C)
+
+Thiết kế cũ “mỗi ingredient một dòng” đã được thay bằng mô hình **lot + base unit**:
+
+- Mỗi `UserPantry` là một lot theo `userId + ingredientId + expiryDate`.
+- Hai lot chỉ merge khi cùng ingredient và cùng expiry; khác expiry phải giữ riêng để hỗ trợ FEFO.
+- Request nhận thêm `unit`; backend quy đổi `quantityAvailable` và `lowStockThreshold` về `Ingredient.baseUnit` trước khi lưu.
+- `PUT/DELETE` luôn tra theo cả `pantryId + userId`; user khác nhận `404` và không thể sửa/xóa lot.
+- API list trả lot-level, frontend không merge theo tên hoặc tự chọn expiry đại diện.
+- Chi tiết quyết định nghiệp vụ và tiêu chí nghiệm thu: `pantry_plan_option_c.md`.
 
 ## ⚠️ LƯU Ý: Entity đã có sẵn — KHÔNG tạo lại Entity
 
@@ -39,8 +50,9 @@ Các Entity sau đã có trong codebase, chỉ cần **bổ sung 1 field** cho `
 
 ```java
 @Entity
-@Table(name = "user_pantry", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"user_id", "ingredient_id"})
+@Table(name = "user_pantry", indexes = {
+    @Index(name = "idx_pantry_user_ingredient_expiry",
+           columnList = "user_id,ingredient_id,expiry_date")
 })
 public class UserPantry {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,10 +85,10 @@ public class UserPantry {
 ALTER TABLE `user_pantry` ADD COLUMN `expiry_date` DATE NULL AFTER `low_stock_threshold`;
 ```
 
-> **Giải thích thiết kế:**
-> - `UNIQUE(user_id, ingredient_id)`: Mỗi nguyên liệu chỉ có 1 bản ghi trong tủ. Khi thêm mới cùng loại, **cộng dồn** `quantityAvailable`.
-> - `expiry_date`: NULL nếu không có hạn sử dụng (VD: gạo, muối, đường).
-> - Trạng thái (FRESH / EXPIRING_SOON / EXPIRED) được **tính động** khi trả về DTO, không lưu vào DB.
+> **Giải thích thiết kế hiện hành:**
+> - Không còn unique `(user_id, ingredient_id)`; dùng index `(user_id, ingredient_id, expiry_date)` để cho phép nhiều lot.
+> - `expiry_date`: NULL là lot không có hạn sử dụng và chỉ merge với lot NULL cùng ingredient.
+> - Quantity/threshold được lưu theo `Ingredient.baseUnit`; trạng thái hết hạn được tính động khi trả DTO.
 
 ### 1.2 Logic cảnh báo ngày hết hạn (trong app)
 
@@ -139,7 +151,7 @@ Khi người dùng mở trang PantryPage:
 
 | DTO | Mục đích | Fields |
 |-----|----------|--------|
-| `PantryRequest.java` | Request thêm/sửa | `ingredientId`, `quantityAvailable`, `lowStockThreshold`, `expiryDate` |
+| `PantryRequest.java` | Request thêm/sửa | `ingredientId`, `quantityAvailable`, `unit`, `lowStockThreshold`, `expiryDate` |
 | `PantryResponse.java` | Response chi tiết | `id`, `ingredient` (IngredientResponse), `quantityAvailable`, `lowStockThreshold`, `expiryDate`, `daysUntilExpiry`, `status`, `aisleName` |
 | `PantrySummaryResponse.java` | Tổng quan | `totalItems`, `expiringSoonCount`, `expiredCount`, `lowStockCount`, `freshCount` |
 
@@ -155,8 +167,14 @@ public interface PantryRepository extends JpaRepository<UserPantry, Long> {
     @EntityGraph(attributePaths = {"ingredient", "ingredient.aisle"})
     List<UserPantry> findByUserIdOrderByIngredient_Aisle_NameAscExpiryDateAsc(Long userId);
     
-    // Kiểm tra nguyên liệu đã có trong tủ chưa
-    Optional<UserPantry> findByUserIdAndIngredientId(Long userId, Long ingredientId);
+    // Ownership và thao tác đúng lot
+    Optional<UserPantry> findByIdAndUserId(Long id, Long userId);
+
+    // Tìm lot cùng ingredient + expiry để merge
+    Optional<UserPantry> findByUserIdAndIngredientIdAndExpiryDate(
+        Long userId, Long ingredientId, LocalDate expiryDate);
+    Optional<UserPantry> findByUserIdAndIngredientIdAndExpiryDateIsNull(
+        Long userId, Long ingredientId);
     
     // Tìm nguyên liệu sắp hết hạn (trong vòng N ngày tới)
     @EntityGraph(attributePaths = {"ingredient", "ingredient.aisle"})
@@ -189,9 +207,9 @@ public interface PantryRepository extends JpaRepository<UserPantry, Long> {
 
 | Phương thức | Mô tả |
 |-------------|-------|
-| `addOrUpdateItem(Long userId, PantryRequest req)` | Thêm mới hoặc **cộng dồn** `quantityAvailable` nếu đã có. Cập nhật `expiryDate` mới nhất. |
-| `updateItem(Long pantryId, PantryRequest req)` | Cập nhật số lượng, ngưỡng thấp, ngày hết hạn. |
-| `removeItem(Long pantryId)` | Xóa 1 nguyên liệu khỏi tủ. |
+| `addOrUpdateItem(Long userId, PantryRequest req)` | Chuẩn hóa unit; cộng dồn nếu cùng ingredient + expiry, nếu khác expiry tạo lot mới. |
+| `updateItem(Long userId, Long pantryId, PantryRequest req)` | Cập nhật tuyệt đối đúng lot thuộc user; nếu đổi expiry trùng lot khác thì merge. |
+| `removeItem(Long userId, Long pantryId)` | Xóa đúng lot thuộc user; user khác nhận 404. |
 | `getMyPantry(Long userId, String filter)` | Lấy danh sách: ALL / EXPIRING_SOON / EXPIRED / LOW_STOCK. Nhóm theo Aisle. |
 | `getExpiringSoon(Long userId, int days)` | Lấy danh sách sắp hết hạn trong `days` ngày tới. |
 | `deleteAllExpired(Long userId)` | Xóa toàn bộ nguyên liệu đã hết hạn. |
@@ -200,9 +218,9 @@ public interface PantryRepository extends JpaRepository<UserPantry, Long> {
 #### Logic quan trọng:
 
 1. **Cộng dồn nguyên liệu (Merge):**
-   - Khi thêm nguyên liệu đã có trong tủ (cùng `userId` + `ingredientId`) → cộng `quantityAvailable` mới vào cũ.
-   - Cập nhật `expiryDate` = ngày hết hạn **gần nhất** (MIN của cũ và mới).
-   - Cập nhật `lowStockThreshold` nếu được cung cấp.
+   - Chỉ cộng khi cùng `userId + ingredientId + expiryDate` sau khi chuẩn hóa quantity về base unit.
+   - Khác expiry (kể cả `null`) là hai lot độc lập; không dùng MIN expiry để nhập chung.
+   - `lowStockThreshold` được hiểu theo base unit và áp dụng nhất quán cho các lot cùng ingredient.
 
 2. **Tính trạng thái tự động** (trong Service/Response, không lưu DB):
    - `EXPIRED`: `expiryDate < LocalDate.now()`
@@ -241,11 +259,11 @@ public class PantryController {
     
     // PUT /api/v1/pantry/items/{id}
     @PutMapping("/items/{id}")
-    ResponseEntity<PantryResponse> updateItem(@PathVariable Long id, @Valid @RequestBody PantryRequest req);
+    ResponseEntity<PantryResponse> updateItem(Principal principal, @PathVariable Long id, @Valid @RequestBody PantryRequest req);
     
     // DELETE /api/v1/pantry/items/{id}
     @DeleteMapping("/items/{id}")
-    ResponseEntity<Void> removeItem(@PathVariable Long id);
+    ResponseEntity<Void> removeItem(Principal principal, @PathVariable Long id);
     
     // GET /api/v1/pantry/expiring-soon?days=7
     @GetMapping("/expiring-soon")

@@ -1,8 +1,8 @@
 # Sprint Plan - Các bước tiếp theo
 
 > **Sprint:** Sprint 3+ (Module Bình luận + Hồ sơ người dùng + Tủ lạnh & Đi chợ + AI)
-> **Ngày cập nhật:** 08/03/2026
-> **Trạng thái hiện tại:** Module Comment vừa hoàn thành (Backend + Frontend). Đã tích hợp vào RecipeDetailPage.
+> **Ngày cập nhật:** 10/08/2026
+> **Trạng thái hiện tại:** Pantry MVP đã hoàn thiện theo phương án C (lot + base unit + ownership + FEFO-ready). Grocery là module tiếp theo.
 
 ---
 
@@ -17,8 +17,8 @@
 | Upload ảnh (Cloudinary) | Sprint 2 (bổ sung) | ✅ Hoàn thành |
 | **Comment (Bình luận)** | Sprint 3 | ✅ Vừa hoàn thành |
 | **User Profile + Follow** | Sprint 3 | ✅ Hoàn thành |
-| **Pantry (Tủ lạnh ảo)** | Sprint 4 | ❌ Tiếp theo |
-| **Grocery (Đi chợ thông minh)** | Sprint 4 | ❌ Chưa làm |
+| **Pantry (Tủ lạnh ảo)** | Sprint 4 | ✅ Hoàn thành MVP, đã có test nghiệp vụ |
+| **Grocery (Đi chợ thông minh)** | Sprint 4 | ✅ Hoàn thành |
 | **Cooking Journal + AI (Gemini)** | Sprint 5 | ❌ Chưa làm |
 | **Notification** | Sprint 5 | ❌ Chưa làm |
 | **Testing + Deployment** | Sprint 6 | ❌ Chưa làm |
@@ -55,52 +55,51 @@ Module bình luận đã được triển khai đầy đủ gồm:
 
 ---
 
-### 🔴 ƯU TIÊN 1 (TIẾP THEO): Pantry - Quản lý Tủ lạnh ảo (Virtual Pantry)
+### ✅ ĐÃ HOÀN THÀNH MVP: Pantry - Quản lý Tủ lạnh ảo (Virtual Pantry)
 
 **Mức độ ưu tiên: CAO** - Module cốt lõi để hệ thống "thông minh", là nền tảng cho Grocery List và AI Zero-Waste.
 Tương ứng với Sprint 4 trong `project_master_plan.md`.
 
-#### Backend (Cần tạo mới):
-- [ ] **Entity `Pantry`** - Fields: `id`, `user`, `ingredient`, `quantity`, `unit`, `expiryDate`, `addedAt`, `updatedAt`.
-- [ ] **DTO `PantryRequest`** / **`PantryResponse`** - Add/Update/Get pantry items.
-- [ ] **Repository `PantryRepository`** - `findByUserId`, `findByUserIdAndIngredientId`, `findByUserIdAndExpiryDateBefore` (cảnh báo sắp hết hạn).
-- [ ] **Service `PantryService`** + **`PantryServiceImpl`**:
-  - Thêm nguyên liệu vào tủ (khi đi chợ xong).
-  - Cập nhật số lượng (tăng/giảm thủ công).
-  - Tự động trừ nguyên liệu khi nấu ăn (trigger từ Cooking Journal).
-  - Cảnh báo nguyên liệu sắp hết hạn.
-  - Quy đổi đơn vị khi gộp nguyên liệu (tận dụng `UnitConversionRepository`).
-- [ ] **Controller `PantryController`** - Endpoints: CRUD pantry, search, filter by category/aisle.
+#### Backend (Đã hoàn thành MVP):
+- [x] Dùng entity `UserPantry` theo lot `user + ingredient + expiryDate`.
+- [x] DTO `PantryRequest` / `PantryResponse` / `PantrySummaryResponse`; request nhận `unit`.
+- [x] `PantryRepository` hỗ trợ ownership và tra lot cùng expiry.
+- [x] `PantryService` + `PantryServiceImpl`: CRUD, filter, expiry summary, merge đúng lot, low-stock theo tổng ingredient.
+- [x] `UnitNormalizationService`: chuẩn hóa alias, conversion hai chiều và chuỗi ngắn về `Ingredient.baseUnit`.
+- [x] `PantryController`: mọi thao tác mutating lấy `userId` từ JWT principal.
+- [x] Test: 9 case cho kg/g, lít/ml, reverse conversion, unit không hợp lệ, ownership, merge/tách lot và low-stock.
+- [ ] Tự động trừ theo FEFO sẽ nối vào Grocery/Cooking Journal khi các module đó được triển khai.
 
-#### Frontend (Cần tạo mới):
-- [ ] **Service `pantryService.js`**.
-- [ ] **Page `PantryPage.jsx`** - Giao diện quản lý tủ lạnh:
+#### Frontend (Đã hoàn thành MVP):
+- [x] **Service `pantryService.js`**.
+- [x] **Page `PantryPage.jsx`** - Giao diện quản lý tủ lạnh:
   - Danh sách nguyên liệu hiện có (kèm số lượng, đơn vị, ngày hết hạn).
   - Form thêm nguyên liệu (tích hợp `IngredientAutocomplete`).
   - Cảnh báo màu sắc (xanh: còn hạn, vàng: sắp hết hạn, đỏ: đã hết hạn).
-  - Nút "Thêm vào danh sách đi chợ" cho nguyên liệu sắp hết.
+  - Hiển thị từng lot theo FEFO, chỉnh/xóa đúng lot, thêm số lượng kèm unit.
+- [ ] Nút "Thêm vào danh sách đi chợ" sẽ hoàn thiện cùng module Grocery.
 
 ---
 
-### 🟡 ƯU TIÊN 3: Grocery - Danh sách đi chợ thông minh (Smart Grocery List)
+### ✅ ĐÃ HOÀN THÀNH: Grocery - Danh sách đi chợ thông minh (Smart Grocery List)
 
 **Mức độ ưu tiên: TRUNG BÌNH** - Tính năng tiện ích, tăng trải nghiệm người dùng.
 Tương ứng với Sprint 4 trong `project_master_plan.md`.
 
-#### Backend (Cần tạo mới):
-- [ ] **Entity `GroceryList`** + **`GroceryItem`**:
+#### Backend (Đã hoàn thành):
+- [x] **Entity `GroceryList`** + **`GroceryItem`**:
   - `GroceryList`: `id`, `user`, `name`, `createdAt`, `completedAt`, `isCompleted`.
   - `GroceryItem`: `id`, `groceryList`, `ingredient`, `quantity`, `unit`, `isPurchased`, `aisle` (để sắp xếp theo gian hàng).
-- [ ] **Thuật toán thông minh trong `GroceryService`**:
+- [x] **Thuật toán thông minh trong `GroceryService`**:
   - Gộp nhóm nguyên liệu trùng lặp.
   - Quy đổi đơn vị về cùng 1 đơn vị trước khi gộp.
   - Đối chiếu với Pantry: tự động trừ đi nguyên liệu đã có sẵn.
   - Sắp xếp danh sách theo Aisle (gian hàng) để tiện đi chợ.
-- [ ] **Controller `GroceryController`** - Endpoints: CRUD grocery list, add/remove items, mark as purchased, complete list.
+- [x] **Controller `GroceryController`** - Endpoints: CRUD grocery list, add/remove items, mark as purchased, complete list.
 
-#### Frontend (Cần tạo mới):
-- [ ] **Service `groceryService.js`**.
-- [ ] **Page `GroceryPage.jsx`**:
+#### Frontend (Đã hoàn thành):
+- [x] **Service `groceryService.js`**.
+- [x] **Page `GroceryPage.jsx`**:
   - Tạo danh sách đi chợ mới (thủ công hoặc tự động từ meal plan).
   - Hiển thị danh sách theo nhóm Aisle.
   - Tick chọn món đã mua → tự động cập nhật Pantry.
@@ -110,7 +109,7 @@ Tương ứng với Sprint 4 trong `project_master_plan.md`.
 
 ### 🟢 ƯU TIÊN 4: Nâng cấp & Fix lỗi (Technical Debt)
 
-- [ ] **Unit Conversion Service nâng cao** - Tận dụng `UnitConversionRepository` để quy đổi đơn vị thực tế (cốc, muỗng, gram...) trong tính toán dinh dưỡng và gộp nguyên liệu.
+- [x] **Unit Conversion cho Pantry** - Đã dùng `UnitConversionRepository` để chuẩn hóa quantity/threshold về base unit; phần dinh dưỡng/Grocery sẽ tái sử dụng.
 - [ ] **Tối ưu search Recipe** - Thêm filter theo tag, difficulty, prepTime, cookTime vào `RecipeSearchRequest` và UI tương ứng.
 - [ ] **Pagination UI** - Tích hợp phân trang cho `HomePage`, `MyRecipesPage`.
 - [ ] **Loading skeletons** - Thêm skeleton loading cho các trang danh sách.
@@ -259,14 +258,14 @@ Tương ứng với Sprint 5 trong `project_master_plan.md`.
 1. **Entity `RecipeComment`** đã được cập nhật với cấu trúc cây (parent-child, replies). Không cần tạo entity `Comment` mới như kế hoạch cũ.
 2. **Bảng `comments`** - Cần cập nhật `init_database.sql` thêm cột `parent_id`, `updated_at` nếu chưa có.
 3. **Bảng `follows`** - Cần thêm vào `init_database.sql`.
-4. **Bảng `pantries`** và `grocery_lists`/`grocery_items` - Cần thiết kế schema mới.
+4. **Bảng `user_pantry`** đã chuyển sang lot-level; Grocery vẫn cần triển khai service/controller/frontend theo entity hiện có.
 5. **Cloudinary config** - Đảm bảo biến môi trường `CLOUDINARY_URL` đã được cấu hình.
 6. **Security** - Kiểm tra CORS config, JWT expiration, refresh token rotation.
 7. **Database indexes** - Thêm index cho `recipe_id`, `parent_id` (comments), `follower_id`/`following_id` (follows), `user_id`/`ingredient_id` (pantries).
 
 ---
 
-## 📝 GHI CHÚ KIỂM TRA TIẾN ĐỘ (CẬP NHẬT 08/03/2026)
+## 📝 GHI CHÚ KIỂM TRA TIẾN ĐỘ (CẬP NHẬT 10/08/2026)
 
 | Mục | Trạng thái | Ghi chú |
 |-----|-----------|---------|
@@ -279,9 +278,9 @@ Tương ứng với Sprint 5 trong `project_master_plan.md`.
 | **Comment** | ✅ | Entity (cây), DTO, Repository, Service, Controller, Frontend (CommentSection + CommentItem + CSS). Đã tích hợp vào RecipeDetailPage. |
 | **User Profile** | ✅ | Đã hoàn thành GET/PUT profile, avatar, displayName, bio. |
 | **Follow** | ✅ | Đã hoàn thành Entity, Repository, Service, Controller, FollowButton. |
-| **Pantry** | ❌ (Tiếp theo) | Cần làm: Quản lý tủ lạnh ảo, tự động trừ nguyên liệu. |
-| **Grocery** | ❌ | Cần làm: Danh sách đi chợ thông minh, gộp nhóm, quy đổi đơn vị. |
+| **Pantry** | ✅ MVP | Lot-level, base unit, ownership, expiry/summary/filter và frontend đã hoàn thiện; FEFO deduction chờ Grocery/Cooking Journal. |
+| **Grocery** | ✅ | Đã hoàn thành (Backend CRUD, generate, complete, Frontend Components/Pages). |
 | **AI (Gemini)** | ❌ | Cần làm: Zero-Waste, Feasible Recipe Finder. |
-| UnitConversion thực tế | ❌ | Repository đã có nhưng chưa áp dụng vào logic. |
+| UnitConversion thực tế | ✅ Pantry | Đã áp dụng vào quantity/threshold Pantry và có test; mở rộng sang Grocery/dinh dưỡng sau. |
 | Pagination UI | ❌ | Chưa có phân trang cho danh sách. |
 | Docker / CI/CD | ❌ | Chưa triển khai. |

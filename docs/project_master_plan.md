@@ -35,8 +35,8 @@ Bảng dưới đây theo dõi sát sao tiến trình hiện tại của toàn b
 | **Boilerplate Frontend** | ✅ Hoàn thành | Vite + React, Tailwind, Zustand, TanStack Query v5, Axios. |
 | **Sprint 1 (Auth)** | ✅ Hoàn thành | Xong toàn bộ Security JWT, API Đăng nhập/Đăng ký, Giao diện Login/Register. |
 | **Sprint 2 (Users)** | ✅ Hoàn thành | Xong API Profile, Cloudinary, Master Data (Ingredients, Aisles, Tags, UnitConversions) + Redis Cache + Frontend Autocomplete. |
-| **Sprint 3 (Recipes)** | ❌ Chưa bắt đầu | |
-| **Sprint 4 (Pantry & Grocery)**| ❌ Chưa bắt đầu | |
+| **Sprint 3 (Recipes)** | ✅ Hoàn thành MVP | Backend CRUD/search/export/clone/like và giao diện Recipe đã có; contract FE/BE đã đối chiếu, 5 test service Recipe chạy xanh. |
+| **Sprint 4 (Pantry & Grocery)**| 🟡 Pantry MVP hoàn thành, Grocery chưa triển khai | Pantry đã hoàn thiện lot + base unit + ownership + FEFO-ready; 9 test Pantry/đơn vị chạy xanh. Grocery chưa có implementation tương ứng. |
 | **Sprint 5 (Journal & AI)** | ❌ Chưa bắt đầu | |
 | **Sprint 6 (Community)** | ❌ Chưa bắt đầu | |
 
@@ -62,19 +62,23 @@ Chiến lược: **Backend trước, Frontend sau**. Mỗi Sprint xây dựng xo
 - [x] Khởi tạo Repositories & API cho `Ingredients`, `Aisles`, `Tags`, `UnitConversions`.
 - [x] Frontend component `IngredientAutocomplete` để tìm kiếm nguyên liệu.
 
-### 🟡 Sprint 3: Công thức Nấu ăn (Recipes) - `[❌ CHƯA BẮT ĐẦU]`
+### 🟡 Sprint 3: Công thức Nấu ăn (Recipes) - `[✅ HOÀN THÀNH MVP]`
 **Mục tiêu:** Quản lý CRUD công thức, bước nấu, nguyên liệu con, chia sẻ công thức.
-- [ ] Backend: API CRUD Recipes, Feed cộng đồng (Cache Redis), Tìm kiếm phân trang.
-- [ ] Backend: Logic Clone công thức.
-- [ ] Frontend: `MyRecipesPage.jsx`, Form đa bước (Multi-step) tạo công thức.
-- [ ] Frontend: `RecipeDetailPage.jsx` (Hiển thị chi tiết + tính toán Macro/Calo).
+- [x] Backend: API CRUD Recipes, Feed cộng đồng (Cache Redis), Tìm kiếm phân trang.
+- [x] Backend: Logic Clone công thức.
+- [x] Frontend: `MyRecipesPage.jsx`, Form đa bước (Multi-step) tạo công thức.
+- [x] Frontend: `RecipeDetailPage.jsx` (Hiển thị chi tiết + tính toán Macro/Calo).
+- [x] Đối chiếu contract API/UI và test service các luồng ownership, soft delete, clone, like/unlike (5/5 xanh).
+- [ ] Kiểm thử UI/API thủ công với dữ liệu thực và xử lý các cảnh báo lint còn lại.
 
-### 🟠 Sprint 4: Tủ lạnh & Đi chợ (Pantry & Grocery) - `[❌ CHƯA BẮT ĐẦU]`
+### 🟠 Sprint 4: Tủ lạnh & Đi chợ (Pantry & Grocery) - `[🟡 PANTRY ĐÃ TRIỂN KHAI, GROCERY CHƯA BẮT ĐẦU]`
 **Mục tiêu:** Quản lý kho nguyên liệu cá nhân + tạo danh sách đi chợ thông minh.
-- [ ] Backend: API quản lý Tủ lạnh (`Pantry`), cảnh báo sắp hết nguyên liệu.
+- [x] Backend: API quản lý Tủ lạnh (`Pantry`), cảnh báo sắp hết nguyên liệu.
 - [ ] Backend: Thuật toán tạo Phiên đi chợ (Gộp nguyên liệu, quy đổi đơn vị, trừ hao đồ có sẵn).
-- [ ] Frontend: `PantryPage.jsx` (Quản lý kho).
-- [ ] Frontend: `GroceryPage.jsx` (Tạo danh sách, tick chọn món đồ đã mua).
+- [x] Frontend: `PantryPage.jsx` (Quản lý kho).
+- [ ] Frontend: `GroceryPage.jsx` (Tạo danh sách, tick chọn món đồ đã mua) — chưa có implementation.
+- [x] Nghiệm thu tự động Pantry: ownership, đơn vị/định lượng, expiry merge/update và low-stock (9/9 test xanh).
+- [ ] Kiểm thử UI/API thủ công Pantry với dữ liệu thực.
 
 ### 🔴 Sprint 5: Nhật ký & Trợ lý AI (Cooking Journal & AI) - `[❌ CHƯA BẮT ĐẦU]`
 **Mục tiêu:** Ghi nhận lịch sử nấu ăn và tích hợp Gemini AI.
