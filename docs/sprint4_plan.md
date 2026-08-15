@@ -2,7 +2,7 @@
 
 > **Ngày soạn:** 08/04/2026 — **Cập nhật:** 10/08/2026
 > **Tổng thời gian dự kiến:** 3-4 tuần
-> **Trạng thái hiện tại:** Pantry MVP đã hoàn thiện theo mô hình lot + base unit; Grocery chưa triển khai. Bộ 9 test nghiệp vụ Pantry/đơn vị đang chạy xanh.
+> **Trạng thái hiện tại:** Cả Pantry MVP và Grocery MVP đã hoàn thiện. Toàn bộ các API, tính năng và giao diện của Grocery đã được triển khai đầy đủ. Đang trong giai đoạn viết Unit Test.
 
 ---
 
@@ -13,7 +13,7 @@ Hoàn thiện 2 module cốt lõi giúp hệ thống trở nên "thông minh":
 | # | Module | Mức độ ưu tiên | Mô tả |
 |---|--------|---------------|-------|
 | 1 | **Pantry (Tủ lạnh ảo)** | 🔴 CAO | Quản lý nguyên liệu tồn kho, cảnh báo hết hạn trong app, phân nhóm theo Aisle |
-| 2 | **Grocery (Đi chợ thông minh)** | 🟡 TRUNG BÌNH | Danh sách đi chợ, gộp nhóm theo gian hàng, đồng bộ với Pantry |
+| 2 | **Grocery (Đi chợ thông minh)** | 🟡 TRUNG BÌNH | Danh sách đi chợ, gộp nhóm theo gian hàng, đồng bộ với Pantry (✅ Đã triển khai) |
 
 ---
 
@@ -635,34 +635,34 @@ public class GroceryController {
 - [ ] C8. Tạo `src/styles/pages/PantryPage.module.css`
 
 ### PHASE D: GROCERY BACKEND
-- [ ] D1. Tạo `GroceryListRequest.java` + `GroceryItemRequest.java` DTO
-- [ ] D2. Tạo `GroceryListResponse.java` + `GroceryItemResponse.java` DTO
-- [ ] D3. Tạo `GroceryListRepository` + `GroceryItemRepository`
-- [ ] D4. Tạo `GroceryService` interface
-- [ ] D5. Implement `GroceryServiceImpl`:
-  - [ ] D5a. `createList` / `getActiveList` / `getListById` / `getAllLists` / `deleteList`
-  - [ ] D5b. `addItem` / `updateItem` / `removeItem` / `togglePurchased`
-  - [ ] D5c. `completeList` (cập nhật Pantry)
-  - [ ] D5d. `generateFromPantry`
-  - [ ] D5e. `generateFromRecipe`
-- [ ] D6. Tạo `GroceryController`
-- [ ] D7. Tạo `CompleteGroceryRequest` DTO (nếu cần thiết)
+- [x] D1. Tạo `GroceryListRequest.java` + `GroceryItemRequest.java` DTO
+- [x] D2. Tạo `GroceryListResponse.java` + `GroceryItemResponse.java` DTO
+- [x] D3. Tạo `GroceryListRepository` + `GroceryItemRepository`
+- [x] D4. Tạo `GroceryService` interface
+- [x] D5. Implement `GroceryServiceImpl`:
+  - [x] D5a. `createList` / `getActiveList` / `getListById` / `getAllLists` / `deleteList`
+  - [x] D5b. `addItem` / `updateItem` / `removeItem` / `togglePurchased`
+  - [x] D5c. `completeList` (cập nhật Pantry)
+  - [x] D5d. `generateFromPantry`
+  - [x] D5e. `generateFromRecipe`
+- [x] D6. Tạo `GroceryController`
+- [x] D7. Tạo `CompleteGroceryRequest` DTO (nếu cần thiết)
 - [ ] D8. Test tất cả API với Postman
 
 ### PHASE E: GROCERY FRONTEND
-- [ ] E1. Tạo `src/services/groceryService.js`
-- [ ] E2. Tạo `src/pages/GroceryPage.jsx` (trang chính)
-- [ ] E3. Tạo `src/components/grocery/AisleGroupHeader.jsx`
-- [ ] E4. Tạo `src/components/grocery/GroceryItemRow.jsx`
-- [ ] E5. Tạo `src/components/grocery/AddGroceryItemModal.jsx`
-- [ ] E6. Tạo `src/components/grocery/CompleteConfetti.jsx`
-- [ ] E7. Tạo `src/styles/pages/GroceryPage.module.css`
+- [x] E1. Tạo `src/services/groceryService.js`
+- [x] E2. Tạo `src/pages/GroceryPage.jsx` (trang chính)
+- [x] E3. Tạo `src/components/grocery/AisleGroupHeader.jsx`
+- [x] E4. Tạo `src/components/grocery/GroceryItemRow.jsx`
+- [x] E5. Tạo `src/components/grocery/AddGroceryItemModal.jsx`
+- [x] E6. Tạo `src/components/grocery/CompleteConfetti.jsx`
+- [x] E7. Tạo `src/styles/pages/GroceryPage.module.css`
 
 ### PHASE F: TÍCH HỢP & HOÀN THIỆN
-- [ ] F1. Cập nhật `App.jsx` — thêm route `/pantry` và `/grocery`
-- [ ] F2. Cập nhật `Navbar.jsx` — thêm link "Tủ lạnh" và "Đi chợ" vào menu
-- [ ] F3. Tích hợp nút "Thêm vào danh sách đi chợ" trong `RecipeDetailPage.jsx`
-- [ ] F4. Tích hợp nút "Tạo danh sách đi chợ" trong `PantryPage.jsx`
+- [x] F1. Cập nhật `App.jsx` — thêm route `/pantry` và `/grocery`
+- [x] F2. Cập nhật `Navbar.jsx` — thêm link "Tủ lạnh" và "Đi chợ" vào menu
+- [x] F3. Tích hợp nút "Thêm vào danh sách đi chợ" trong `RecipeDetailPage.jsx`
+- [x] F4. Tích hợp nút "Tạo danh sách đi chợ" trong `PantryPage.jsx`
 - [ ] F5. Test tích hợp end-to-end toàn bộ luồng
 
 ---

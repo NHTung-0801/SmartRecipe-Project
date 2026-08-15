@@ -12,7 +12,7 @@ services:
       # Lưu trữ dữ liệu cố định (không bị mất khi restart container)
       - db_data:/var/lib/mysql
       # Tự động chạy script khởi tạo Database khi bật container lần đầu tiên
-      - ./init_database.sql:/docker-entrypoint-initdb.d/init_database.sql:ro
+      - ./sql/init_database.sql:/docker-entrypoint-initdb.d/init_database.sql:ro
     networks:
       - smartrecipe-network
 
@@ -29,7 +29,7 @@ services:
   backend-api:
     build:
       context: ./smartrecipe-backend
-      dockerfile: Dockerfile
+      dockerfile: .docker/Dockerfile
     container_name: smartrecipe-backend
     ports:
       - "8080:8080"
@@ -50,7 +50,7 @@ services:
   frontend-web:
     build:
       context: ./smartrecipe-frontend
-      dockerfile: Dockerfile
+      dockerfile: .docker/Dockerfile
     container_name: smartrecipe-frontend
     ports:
       - "3000:80"

@@ -1,7 +1,6 @@
 # 🛒 KẾ HOẠCH TRIỂN KHAI GROCERY — SPRINT 4
 
-> **Ngày soạn:** 11/08/2026
-> **Trạng thái hiện tại:** Backend đã có Entity, DTO, Repository, ServiceImpl. Còn thiếu 10 file mới + 4 file sửa.
+> **Trạng thái hiện tại:** Đã hoàn thành triển khai. Tất cả các file Backend và Frontend đều đã được code và tích hợp thành công. Đang trong quá trình viết Unit Test.
 
 ---
 
@@ -357,15 +356,15 @@ Trong phần header của công thức:
 
 ## 🎯 TIÊU CHÍ NGHIỆM THU
 
-- [ ] API tạo danh sách đi chợ hoạt động (POST /api/v1/grocery/lists)
-- [ ] API thêm item vào danh sách (POST /api/v1/grocery/lists/{id}/items) — tự động trừ Pantry
-- [ ] API toggle purchased (PATCH /api/v1/grocery/items/{id}/toggle)
-- [ ] API complete list + cập nhật Pantry (POST /api/v1/grocery/lists/{id}/complete)
-- [ ] API generate from recipe (POST /api/v1/grocery/lists/generate-from-recipe/{id})
-- [ ] API generate from pantry (POST /api/v1/grocery/lists/generate-from-pantry)
-- [ ] Frontend: Hiển thị danh sách items nhóm theo Aisle
-- [ ] Frontend: Checkbox đánh dấu đã mua, item bị gạch ngang
-- [ ] Frontend: Hiệu ứng confetti khi hoàn thành
-- [ ] Frontend: Nút "Tạo danh sách đi chợ" từ PantryPage
-- [ ] Frontend: Nút "Thêm vào danh sách đi chợ" từ RecipeDetailPage
-- [ ] Navbar có link "Đi chợ", App.jsx có route /grocery
+- [x] API tạo danh sách đi chợ hoạt động (POST /api/v1/grocery/lists)
+- [x] API thêm item vào danh sách (POST /api/v1/grocery/lists/{id}/items) — tự động trừ Pantry
+- [x] API toggle purchased (PATCH /api/v1/grocery/items/{id}/toggle)
+- [x] API complete list + cập nhật Pantry (POST /api/v1/grocery/lists/{id}/complete)
+- [x] API generate from recipe (POST /api/v1/grocery/lists/generate-from-recipe/{id})
+- [x] API generate from pantry (POST /api/v1/grocery/lists/generate-from-pantry)
+- [x] Frontend: Hiển thị danh sách items nhóm theo Aisle
+- [x] Frontend: Checkbox đánh dấu đã mua, item bị gạch ngang
+- [x] Frontend: Hiệu ứng confetti khi hoàn thành
+- [x] Frontend: Nút "Tạo danh sách đi chợ" từ PantryPage
+- [x] Frontend: Nút "Thêm vào danh sách đi chợ" từ RecipeDetailPage
+- [x] Navbar có link "Đi chợ", App.jsx có route /grocery

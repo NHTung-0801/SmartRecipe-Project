@@ -36,7 +36,7 @@ Bảng dưới đây theo dõi sát sao tiến trình hiện tại của toàn b
 | **Sprint 1 (Auth)** | ✅ Hoàn thành | Xong toàn bộ Security JWT, API Đăng nhập/Đăng ký, Giao diện Login/Register. |
 | **Sprint 2 (Users)** | ✅ Hoàn thành | Xong API Profile, Cloudinary, Master Data (Ingredients, Aisles, Tags, UnitConversions) + Redis Cache + Frontend Autocomplete. |
 | **Sprint 3 (Recipes)** | ✅ Hoàn thành MVP | Backend CRUD/search/export/clone/like và giao diện Recipe đã có; contract FE/BE đã đối chiếu, 5 test service Recipe chạy xanh. |
-| **Sprint 4 (Pantry & Grocery)**| 🟡 Pantry MVP hoàn thành, Grocery chưa triển khai | Pantry đã hoàn thiện lot + base unit + ownership + FEFO-ready; 9 test Pantry/đơn vị chạy xanh. Grocery chưa có implementation tương ứng. |
+| **Sprint 4 (Pantry & Grocery)**| ✅ Hoàn thành MVP | Pantry đã hoàn thiện theo lot + base unit. Grocery đã hoàn thiện các tính năng danh sách đi chợ, gộp nhóm và tự động cập nhật kho. Đang trong giai đoạn hoàn thiện test. |
 | **Sprint 5 (Journal & AI)** | ❌ Chưa bắt đầu | |
 | **Sprint 6 (Community)** | ❌ Chưa bắt đầu | |
 
@@ -71,14 +71,15 @@ Chiến lược: **Backend trước, Frontend sau**. Mỗi Sprint xây dựng xo
 - [x] Đối chiếu contract API/UI và test service các luồng ownership, soft delete, clone, like/unlike (5/5 xanh).
 - [ ] Kiểm thử UI/API thủ công với dữ liệu thực và xử lý các cảnh báo lint còn lại.
 
-### 🟠 Sprint 4: Tủ lạnh & Đi chợ (Pantry & Grocery) - `[🟡 PANTRY ĐÃ TRIỂN KHAI, GROCERY CHƯA BẮT ĐẦU]`
+### 🟠 Sprint 4: Tủ lạnh & Đi chợ (Pantry & Grocery) - `[✅ HOÀN THÀNH MVP]`
 **Mục tiêu:** Quản lý kho nguyên liệu cá nhân + tạo danh sách đi chợ thông minh.
 - [x] Backend: API quản lý Tủ lạnh (`Pantry`), cảnh báo sắp hết nguyên liệu.
-- [ ] Backend: Thuật toán tạo Phiên đi chợ (Gộp nguyên liệu, quy đổi đơn vị, trừ hao đồ có sẵn).
+- [x] Backend: Thuật toán tạo Phiên đi chợ (Gộp nguyên liệu, quy đổi đơn vị, trừ hao đồ có sẵn).
 - [x] Frontend: `PantryPage.jsx` (Quản lý kho).
-- [ ] Frontend: `GroceryPage.jsx` (Tạo danh sách, tick chọn món đồ đã mua) — chưa có implementation.
+- [x] Frontend: `GroceryPage.jsx` (Tạo danh sách, tick chọn món đồ đã mua) và các Component liên quan.
+- [x] Tích hợp: Thêm vào danh sách đi chợ từ Recipe và tự động cập nhật Tủ lạnh.
 - [x] Nghiệm thu tự động Pantry: ownership, đơn vị/định lượng, expiry merge/update và low-stock (9/9 test xanh).
-- [ ] Kiểm thử UI/API thủ công Pantry với dữ liệu thực.
+- [ ] Hoàn thiện Unit Test cho Grocery và kiểm thử UI/API thủ công với dữ liệu thực.
 
 ### 🔴 Sprint 5: Nhật ký & Trợ lý AI (Cooking Journal & AI) - `[❌ CHƯA BẮT ĐẦU]`
 **Mục tiêu:** Ghi nhận lịch sử nấu ăn và tích hợp Gemini AI.
