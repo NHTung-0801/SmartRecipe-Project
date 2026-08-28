@@ -3,6 +3,11 @@ services:
   mysql-db:
     image: mysql:8.0
     container_name: smartrecipe-mysql
+    # --character-set-server và --collation-server đảm bảo mọi DB tạo qua
+    # MYSQL_DATABASE env đều dùng collation đúng. Nếu thiếu, MySQL 8.0 tạo DB
+    # với utf8mb4_0900_ai_ci (accent-insensitive), khiến 'Dầu dừa' = 'Đậu đũa'
+    # và seed_ingredients.sql thất bại với ERROR 1062 Duplicate entry.
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_0900_as_ci
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: smart_recipe_db

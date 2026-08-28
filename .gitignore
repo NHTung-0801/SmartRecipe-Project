@@ -36,3 +36,25 @@ Thumbs.db
 # Python cache
 __pycache__/
 *.pyc
+
+# Dataset thô USDA SR Legacy (food_nutrient.csv ~35MB) - tải lại từ fdc.nal.usda.gov
+# Thư mục trên đĩa tên là 'Dataset' (D hoa). Git trên Windows đang bật
+# core.ignorecase nên 'dataset/' cũng khớp, nhưng viết đúng hoa/thường để
+# pattern còn hoạt động khi clone trên Linux/macOS.
+# Dùng 'Dataset/*' chứ không phải 'Dataset/': với 'Dataset/' git loại luôn cả
+# thư mục và không đi vào bên trong, nên dòng '!' bên dưới sẽ vô tác dụng.
+Dataset/*
+
+# Ngoại lệ: giữ CSV đã dịch + gán kệ (290 dòng, ~44KB) vì đây là nguồn sinh
+# sql/seed_ingredients.sql qua tools/gen_seed_sql.py. Mất file này thì không
+# tái tạo được seed mà không dịch tay lại toàn bộ.
+!Dataset/ingredients_to_translate.csv
+
+# Backup DB (.sql dump) - tái tạo được từ sql/init_database.sql + seed
+backup/
+
+# Dữ liệu nội bộ của agent, không thuộc source code
+brain/
+
+# File tạm khi smoke test / kiểm tra DB
+tmp_*
