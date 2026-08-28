@@ -1,0 +1,291 @@
+﻿fdc_id,description,name_vi,food_category_id,category_name,group_token,token_depth,group_size,calories,protein,fat,carbs,atwater_estimate,base_unit,density,review_needed,aisle_id,aisle_name
+173410,"Butter, salted",Bơ mặn,1,Dairy and Egg Products,butter,1,3,717.0,0.85,81.11,0.06,733.63,g,,False,6,Sữa & Trứng
+173414,"Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",Phô mai cheddar,1,Dairy and Egg Products,"cheese, cheddar (includes foods for usda's food distribution program)",2,1,403.0,22.87,33.31,3.37,404.75,g,,False,6,Sữa & Trứng
+173418,"Cheese, cream",Phô mai kem,1,Dairy and Egg Products,"cheese, cream",2,3,350.0,6.15,34.44,5.52,356.64,g,,False,6,Sữa & Trứng
+173420,"Cheese, feta",Phô mai feta,1,Dairy and Egg Products,"cheese, feta",2,1,265.0,14.21,21.49,3.88,265.77,g,,False,6,Sữa & Trứng
+172223,"Cheese, fresh, queso fresco",Phô mai tươi queso fresco,1,Dairy and Egg Products,"cheese, fresh",2,1,299.0,18.09,23.82,2.98,298.66,g,,False,6,Sữa & Trứng
+170845,"Cheese, mozzarella, whole milk",Phô mai mozzarella,1,Dairy and Egg Products,"cheese, mozzarella, whole milk",3,2,299.0,22.17,22.14,2.4,297.54,g,,False,6,Sữa & Trứng
+171247,"Cheese, parmesan, grated",Phô mai parmesan xay,1,Dairy and Egg Products,"cheese, parmesan, grated",3,1,420.0,28.42,27.84,13.91,419.88,g,,False,6,Sữa & Trứng
+170851,"Cheese, ricotta, whole milk",Phô mai ricotta,1,Dairy and Egg Products,"cheese, ricotta",2,2,150.0,7.54,10.18,7.27,150.86,g,,False,6,Sữa & Trứng
+171257,"Cream, sour, cultured",Kem chua,1,Dairy and Egg Products,"cream, sour",2,2,198.0,2.44,19.35,4.63,202.43,g,,False,6,Sữa & Trứng
+172189,"Egg, duck, whole, fresh",Trứng vịt,1,Dairy and Egg Products,"egg, duck",2,1,185.0,12.81,13.77,1.45,180.97,g,,False,6,Sữa & Trứng
+172191,"Egg, quail, whole, fresh",Trứng cút,1,Dairy and Egg Products,"egg, quail",2,1,158.0,13.05,11.09,0.41,153.65,g,,False,6,Sữa & Trứng
+172183,"Egg, white, raw, fresh",Lòng trắng trứng,1,Dairy and Egg Products,"egg, white, raw",3,2,52.0,10.9,0.17,0.73,48.05,g,,False,6,Sữa & Trứng
+171287,"Egg, whole, raw, fresh",Trứng gà,1,Dairy and Egg Products,"egg, whole, raw",3,3,143.0,12.56,9.51,0.72,138.71,g,,False,6,Sữa & Trứng
+172184,"Egg, yolk, raw, fresh",Lòng đỏ trứng,1,Dairy and Egg Products,"egg, yolk, raw",3,4,322.0,15.86,26.54,3.59,316.66,g,,False,6,Sữa & Trứng
+171269,"Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",Sữa tách béo,1,Dairy and Egg Products,"milk, nonfat",2,3,34.0,3.37,0.08,4.96,34.04,g,1.03,False,6,Sữa & Trứng
+171267,"Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",Sữa ít béo,1,Dairy and Egg Products,"milk, reduced fat",2,4,50.0,3.3,1.98,4.8,50.22,g,1.03,False,6,Sữa & Trứng
+171265,"Milk, whole, 3.25% milkfat, with added vitamin D",Sữa tươi nguyên kem,1,Dairy and Egg Products,"milk, whole",2,2,61.0,3.15,3.25,4.8,61.05,g,1.03,False,6,Sữa & Trứng
+170903,"Yogurt, Greek, plain, lowfat",Sữa chua Hy Lạp không đường,1,Dairy and Egg Products,"yogurt, greek, plain",3,3,73.0,9.95,1.92,3.94,72.84,g,,False,6,Sữa & Trứng
+170886,"Yogurt, plain, low fat",Sữa chua không đường,1,Dairy and Egg Products,"yogurt, plain",2,3,63.0,5.25,1.55,7.04,63.11,g,,False,6,Sữa & Trứng
+172232,"Basil, fresh",Húng quế,2,Spices and Herbs,basil,1,1,23.0,3.15,0.64,2.65,28.96,g,,True,4,Gia vị & Nước chấm
+173474,"Peppermint, fresh",Bạc hà,2,Spices and Herbs,peppermint,1,1,70.0,3.75,0.94,14.89,83.02,g,,False,4,Gia vị & Nước chấm
+173468,"Salt, table",Muối,2,Spices and Herbs,salt,1,1,0.0,0.0,0.0,0.0,0.0,g,,False,4,Gia vị & Nước chấm
+172239,"Spearmint, dried",Húng lủi khô,2,Spices and Herbs,spearmint,1,2,285.0,19.93,6.03,52.04,342.15,g,,False,4,Gia vị & Nước chấm
+170917,"Spices, bay leaf",Lá nguyệt quế,2,Spices and Herbs,"spices, bay leaf",2,1,313.0,7.61,8.36,74.97,405.56,g,,True,4,Gia vị & Nước chấm
+171319,"Spices, chili powder",Ớt bột,2,Spices and Herbs,"spices, chili powder",2,1,282.0,13.46,14.28,49.7,381.16,g,,True,4,Gia vị & Nước chấm
+171320,"Spices, cinnamon, ground",Bột quế,2,Spices and Herbs,"spices, cinnamon",2,1,247.0,3.99,1.24,80.59,349.48,g,,True,4,Gia vị & Nước chấm
+171321,"Spices, cloves, ground",Bột đinh hương,2,Spices and Herbs,"spices, cloves",2,1,274.0,5.97,13.0,65.53,403.0,g,,True,4,Gia vị & Nước chấm
+170921,"Spices, coriander leaf, dried",Ngò rí khô,2,Spices and Herbs,"spices, coriander leaf",2,1,279.0,21.93,4.78,52.1,339.14,g,,False,4,Gia vị & Nước chấm
+170922,"Spices, coriander seed",Hạt ngò rí,2,Spices and Herbs,"spices, coriander seed",2,1,298.0,12.37,17.77,54.99,429.37,g,,True,4,Gia vị & Nước chấm
+170923,"Spices, cumin seed",Hạt thì là Ai Cập,2,Spices and Herbs,"spices, cumin seed",2,1,375.0,17.81,22.27,44.24,448.63,g,,False,4,Gia vị & Nước chấm
+170924,"Spices, curry powder",Bột cà ri,2,Spices and Herbs,"spices, curry powder",2,1,325.0,14.29,14.01,55.83,406.57,g,,True,4,Gia vị & Nước chấm
+171323,"Spices, fennel seed",Hạt thì là,2,Spices and Herbs,"spices, fennel seed",2,1,345.0,15.8,14.87,52.29,406.19,g,,False,4,Gia vị & Nước chấm
+171325,"Spices, garlic powder",Bột tỏi,2,Spices and Herbs,"spices, garlic powder",2,1,331.0,16.55,0.73,72.73,363.69,g,,False,4,Gia vị & Nước chấm
+170926,"Spices, ginger, ground",Bột gừng,2,Spices and Herbs,"spices, ginger",2,1,335.0,8.98,4.24,71.62,360.56,g,,False,4,Gia vị & Nước chấm
+170929,"Spices, mustard seed, ground",Bột hạt mù tạt,2,Spices and Herbs,"spices, mustard seed",2,1,508.0,26.08,36.24,28.09,542.84,g,,False,4,Gia vị & Nước chấm
+171326,"Spices, nutmeg, ground",Bột nhục đậu khấu,2,Spices and Herbs,"spices, nutmeg",2,1,525.0,5.84,36.31,49.29,547.31,g,,False,4,Gia vị & Nước chấm
+171327,"Spices, onion powder",Bột hành,2,Spices and Herbs,"spices, onion powder",2,1,341.0,10.41,1.04,79.12,367.48,g,,False,4,Gia vị & Nước chấm
+171329,"Spices, paprika",Ớt bột paprika,2,Spices and Herbs,"spices, paprika",2,1,282.0,14.14,12.89,53.99,388.53,g,,True,4,Gia vị & Nước chấm
+170931,"Spices, pepper, black",Tiêu đen,2,Spices and Herbs,"spices, pepper",2,3,251.0,10.39,3.26,63.95,326.7,g,,True,4,Gia vị & Nước chấm
+172231,"Spices, turmeric, ground",Bột nghệ,2,Spices and Herbs,"spices, turmeric",2,1,312.0,9.68,3.25,67.14,336.53,g,,False,4,Gia vị & Nước chấm
+173471,Vanilla extract,Tinh chất vani,2,Spices and Herbs,vanilla extract,1,1,288.0,0.06,0.06,12.65,51.38,g,,True,4,Gia vị & Nước chấm
+173469,"Vinegar, cider",Giấm táo,2,Spices and Herbs,vinegar,1,4,21.0,0.0,0.0,0.93,3.72,g,,True,4,Gia vị & Nước chấm
+171401,Lard,Mỡ heo,4,Fats and Oils,lard,1,1,902.0,0.0,100.0,0.0,900.0,g,,False,8,Dầu mỡ & Chất béo
+173573,"Oil, avocado",Dầu bơ,4,Fats and Oils,"oil, avocado",2,1,884.0,0.0,100.0,0.0,900.0,g,0.92,False,8,Dầu mỡ & Chất béo
+172336,"Oil, canola",Dầu hạt cải,4,Fats and Oils,"oil, canola",2,1,884.0,0.0,100.0,0.0,900.0,g,0.92,False,8,Dầu mỡ & Chất béo
+171412,"Oil, coconut",Dầu dừa,4,Fats and Oils,"oil, coconut",2,1,892.0,0.0,99.06,0.0,891.54,g,0.92,False,8,Dầu mỡ & Chất béo
+172337,"Oil, mustard",Dầu mù tạt,4,Fats and Oils,"oil, mustard",2,1,884.0,0.0,100.0,0.0,900.0,g,0.92,False,8,Dầu mỡ & Chất béo
+171015,"Oil, palm",Dầu cọ,4,Fats and Oils,"oil, palm",2,1,884.0,0.0,100.0,0.0,900.0,g,0.92,False,8,Dầu mỡ & Chất béo
+171013,"Oil, rice bran",Dầu gạo,4,Fats and Oils,"oil, rice bran",2,1,884.0,0.0,100.0,0.0,900.0,g,0.92,False,8,Dầu mỡ & Chất béo
+171025,"Oil, sunflower, linoleic, (approx. 65%)",Dầu hướng dương,4,Fats and Oils,"oil, sunflower",2,4,884.0,0.0,100.0,0.0,900.0,g,0.92,False,8,Dầu mỡ & Chất béo
+172370,"Oil, vegetable, soybean, refined",Dầu đậu nành,4,Fats and Oils,"oil, vegetable",2,2,884.0,0.0,100.0,0.0,900.0,g,0.92,False,8,Dầu mỡ & Chất béo
+171077,"Chicken, broiler or fryers, breast, skinless, boneless, meat only",Ức gà không da không xương,5,Poultry Products,"chicken, broiler or fryers",2,1,120.0,22.5,2.62,0.0,113.58,g,,False,2,Thịt & Gia cầm
+171474,"Chicken, broilers or fryers, breast, meat and skin",Ức gà có da,5,Poultry Products,"chicken, broilers or fryers, breast",3,1,172.0,20.85,9.25,0.0,166.65,g,,False,2,Thịt & Gia cầm
+172373,"Chicken, broilers or fryers, drumstick, meat and skin",Đùi gà dưới có da,5,Poultry Products,"chicken, broilers or fryers, drumstick",3,1,161.0,18.08,9.2,0.11,155.56,g,,False,2,Thịt & Gia cầm
+173619,"Chicken, broilers or fryers, leg, meat only",Đùi gà không da,5,Poultry Products,"chicken, broilers or fryers, leg",3,2,120.0,19.16,4.22,0.0,114.62,g,,False,2,Thịt & Gia cầm
+171447,"Chicken, broilers or fryers, meat and skin",Thịt gà có da,5,Poultry Products,"chicken, broilers or fryers, meat and skin",3,1,215.0,18.6,15.06,0.0,209.94,g,,False,2,Thịt & Gia cầm
+171052,"Chicken, broilers or fryers, meat only",Thịt gà không da,5,Poultry Products,"chicken, broilers or fryers, meat only",3,1,119.0,21.39,3.08,0.0,113.28,g,,False,2,Thịt & Gia cầm
+172385,"Chicken, broilers or fryers, thigh, meat and skin",Đùi gà trên có da,5,Poultry Products,"chicken, broilers or fryers, thigh",3,1,221.0,16.52,16.61,0.25,216.57,g,,False,2,Thịt & Gia cầm
+173632,"Chicken, broilers or fryers, wing, meat only",Cánh gà không da,5,Poultry Products,"chicken, broilers or fryers, wing",3,2,126.0,21.97,3.54,0.0,119.74,g,,False,2,Thịt & Gia cầm
+171456,"Chicken, gizzard, all classes",Mề gà,5,Poultry Products,"chicken, gizzard",2,1,94.0,17.66,2.06,0.0,89.18,g,,False,2,Thịt & Gia cầm
+171116,"Chicken, ground",Thịt gà xay,5,Poultry Products,"chicken, ground",2,1,143.0,17.44,8.1,0.04,142.82,g,,False,2,Thịt & Gia cầm
+171458,"Chicken, heart, all classes",Tim gà,5,Poultry Products,"chicken, heart",2,1,153.0,15.55,9.33,0.71,149.01,g,,False,2,Thịt & Gia cầm
+171060,"Chicken, liver, all classes",Gan gà,5,Poultry Products,"chicken, liver",2,1,119.0,16.92,4.83,0.73,114.07,g,,False,2,Thịt & Gia cầm
+174467,"Duck, domesticated, liver",Gan vịt,5,Poultry Products,"duck, domesticated",2,3,136.0,18.74,4.64,3.53,130.84,g,,False,2,Thịt & Gia cầm
+171079,"Squab, (pigeon), meat only",Thịt chim bồ câu,5,Poultry Products,squab,1,3,142.0,17.5,7.5,0.0,137.5,g,,False,2,Thịt & Gia cầm
+172850,"Turkey, ground, 93% lean, 7% fat",Thịt gà tây xay,5,Poultry Products,"turkey, ground, 93% lean",3,3,150.0,18.73,8.34,0.0,149.98,g,,False,2,Thịt & Gia cầm
+171098,"Turkey, whole, breast, meat only",Ức gà tây,5,Poultry Products,"turkey, whole, breast",3,1,114.0,23.66,1.48,0.14,108.52,g,,False,2,Thịt & Gia cầm
+174531,"Sauce, fish, ready-to-serve",Nước mắm,6,"Soups, Sauces, and Gravies","sauce, fish, ready-to-serve",1,1,35.0,5.06,0.01,3.64,34.89,g,1.1,False,4,Gia vị & Nước chấm
+172886,"Sauce, hoisin, ready-to-serve",Tương đen hoisin,6,"Soups, Sauces, and Gravies","sauce, hoisin, ready-to-serve",1,1,220.0,3.31,3.39,44.08,220.07,g,1.1,False,4,Gia vị & Nước chấm
+171186,"Sauce, hot chile, sriracha",Tương ớt sriracha,6,"Soups, Sauces, and Gravies","sauce, hot chile, sriracha",1,1,93.0,1.93,0.93,19.16,92.73,g,1.1,False,4,Gia vị & Nước chấm
+174529,"Sauce, oyster, ready-to-serve",Dầu hào,6,"Soups, Sauces, and Gravies","sauce, oyster, ready-to-serve",1,1,51.0,1.35,0.25,10.92,51.33,g,1.1,False,4,Gia vị & Nước chấm
+171688,"Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",Táo,9,Fruits and Fruit Juices,"apples, raw, with skin (includes foods for usda's food distribution program)",3,1,52.0,0.26,0.17,13.81,57.81,g,,False,7,Trái cây
+171707,"Avocados, raw, Florida",Quả bơ,9,Fruits and Fruit Juices,avocados,1,3,120.0,2.23,10.06,7.82,130.74,g,,False,7,Trái cây
+173944,Bananas,Chuối,9,Fruits and Fruit Juices,bananas,1,2,89.0,1.09,0.33,22.84,98.69,g,,False,7,Trái cây
+171715,"Carambola, (starfruit)",Khế,9,Fruits and Fruit Juices,carambola,1,1,31.0,1.04,0.33,6.73,34.05,g,,False,7,Trái cây
+168192,"Durian, raw or frozen",Sầu riêng,9,Fruits and Fruit Juices,durian,1,1,147.0,1.47,5.33,27.09,162.21,g,,False,7,Trái cây
+173033,"Grapefruit, raw, pink and red and white, all areas",Bưởi chùm,9,Fruits and Fruit Juices,"grapefruit, raw, pink and red and white",3,1,32.0,0.63,0.1,8.08,35.74,g,,False,7,Trái cây
+173044,"Guavas, common",Ổi,9,Fruits and Fruit Juices,guavas,1,2,68.0,2.55,0.95,14.32,76.03,g,,False,7,Trái cây
+174687,Jackfruit,Mít,9,Fruits and Fruit Juices,jackfruit,1,1,95.0,1.72,0.64,23.25,105.64,g,,False,7,Trái cây
+168151,Jujube,Táo ta,9,Fruits and Fruit Juices,jujube,1,2,79.0,1.2,0.2,20.23,87.52,g,,False,7,Trái cây
+168153,"Kiwifruit, green",Kiwi,9,Fruits and Fruit Juices,kiwifruit,1,2,61.0,1.14,0.52,14.66,67.88,g,,False,7,Trái cây
+168154,Kumquats,Quất,9,Fruits and Fruit Juices,kumquats,1,1,71.0,1.88,0.86,15.9,78.86,g,,False,7,Trái cây
+167747,Lemon juice,Nước cốt chanh vàng,9,Fruits and Fruit Juices,lemon juice,1,1,22.0,0.35,0.24,6.9,31.16,g,,True,7,Trái cây
+168156,Lime juice,Nước cốt chanh,9,Fruits and Fruit Juices,lime juice,1,1,25.0,0.42,0.07,8.42,35.99,g,,True,7,Trái cây
+168155,Limes,Chanh,9,Fruits and Fruit Juices,limes,1,1,30.0,0.7,0.2,10.54,46.76,g,,True,7,Trái cây
+169086,Litchis,Vải,9,Fruits and Fruit Juices,litchis,1,2,66.0,0.83,0.44,16.53,73.4,g,,False,7,Trái cây
+169089,Longans,Nhãn,9,Fruits and Fruit Juices,longans,1,2,60.0,1.31,0.1,15.14,66.7,g,,False,7,Trái cây
+169910,Mangos,Xoài,9,Fruits and Fruit Juices,mangos,1,1,60.0,0.82,0.38,14.98,66.62,g,,False,7,Trái cây
+169097,"Oranges, raw, all commercial varieties",Cam,9,Fruits and Fruit Juices,"oranges, raw, all commercial varieties",3,1,47.0,0.94,0.12,11.75,51.84,g,,False,7,Trái cây
+169926,Papayas,Đu đủ,9,Fruits and Fruit Juices,papayas,1,1,43.0,0.47,0.26,10.82,47.5,g,,False,7,Trái cây
+169109,"Passion-fruit juice, purple",Nước chanh dây,9,Fruits and Fruit Juices,passion-fruit juice,1,2,51.0,0.39,0.05,13.6,56.41,g,,False,7,Trái cây
+169108,"Passion-fruit, (granadilla), purple",Chanh dây,9,Fruits and Fruit Juices,passion-fruit,1,1,97.0,2.2,0.7,23.38,108.62,g,,False,7,Trái cây
+169928,"Peaches, yellow",Đào,9,Fruits and Fruit Juices,peaches,1,4,39.0,0.91,0.25,9.54,44.05,g,,False,7,Trái cây
+169124,"Pineapple, raw, all varieties",Dứa,9,Fruits and Fruit Juices,pineapple,1,3,50.0,0.54,0.12,13.12,55.72,g,,False,7,Trái cây
+168215,"Plantains, green",Chuối sứ xanh,9,Fruits and Fruit Juices,plantains,1,2,152.0,1.25,0.07,36.66,152.27,g,,False,7,Trái cây
+169134,Pomegranates,Lựu,9,Fruits and Fruit Juices,pomegranates,1,1,83.0,1.67,1.17,18.7,92.01,g,,False,7,Trái cây
+167754,Pummelo,Bưởi,9,Fruits and Fruit Juices,pummelo,1,1,38.0,0.76,0.04,9.62,41.88,g,,False,7,Trái cây
+167761,Soursop,Mãng cầu xiêm,9,Fruits and Fruit Juices,soursop,1,1,66.0,1.0,0.3,16.84,74.06,g,,False,7,Trái cây
+167762,Strawberries,Dâu tây,9,Fruits and Fruit Juices,strawberries,1,1,32.0,0.67,0.3,7.68,36.1,g,,False,7,Trái cây
+168175,"Sugar-apples, (sweetsop)",Mãng cầu ta,9,Fruits and Fruit Juices,sugar-apples,1,1,94.0,2.06,0.29,23.64,105.41,g,,False,7,Trái cây
+167763,Tamarinds,Me,9,Fruits and Fruit Juices,tamarinds,1,1,239.0,2.8,0.6,62.5,266.6,g,,False,7,Trái cây
+169105,"Tangerines, (mandarin oranges)",Quýt,9,Fruits and Fruit Juices,tangerines,1,1,53.0,0.81,0.31,13.34,59.39,g,,False,7,Trái cây
+167765,Watermelon,Dưa hấu,9,Fruits and Fruit Juices,watermelon,1,1,30.0,0.61,0.15,7.55,33.99,g,,False,7,Trái cây
+168376,"Pork loin, fresh, backribs, bone-in, raw, lean only",Sườn lưng heo nạc,10,Pork Products,pork loin,1,1,172.0,20.85,9.84,0.0,171.96,g,,False,2,Thịt & Gia cầm
+167870,"Pork, cured, feet, pickled",Chân heo muối chua,10,Pork Products,"pork, cured, feet",3,1,140.0,11.63,10.02,0.01,136.74,g,,False,2,Thịt & Gia cầm
+168299,"Pork, fresh, backribs, separable lean and fat",Sườn lưng heo,10,Pork Products,"pork, fresh, backribs",3,1,224.0,19.07,16.33,0.0,223.25,g,,False,2,Thịt & Gia cầm
+167812,"Pork, fresh, belly",Thịt heo ba rọi,10,Pork Products,"pork, fresh, belly",3,1,518.0,9.34,53.01,0.0,514.45,g,,False,2,Thịt & Gia cầm
+167902,"Pork, fresh, ground",Thịt heo xay,10,Pork Products,"pork, fresh, ground",3,1,263.0,16.88,21.19,0.0,258.23,g,,False,2,Thịt & Gia cầm
+168224,"Pork, fresh, leg (ham), whole, separable lean only",Thịt đùi heo nạc,10,Pork Products,"pork, fresh, leg (ham), whole",4,2,136.0,20.48,5.41,0.0,130.61,g,,False,2,Thịt & Gia cầm
+168249,"Pork, fresh, loin, tenderloin, separable lean only",Thịt heo thăn nội,10,Pork Products,"pork, fresh, loin, tenderloin",4,2,109.0,20.95,2.17,0.0,103.33,g,,False,2,Thịt & Gia cầm
+167845,"Pork, fresh, shoulder, whole, separable lean only",Thịt vai heo nạc,10,Pork Products,"pork, fresh, shoulder, whole",4,2,148.0,19.55,7.14,0.0,142.46,g,,False,2,Thịt & Gia cầm
+167853,"Pork, fresh, spareribs, separable lean and fat",Sườn non heo,10,Pork Products,"pork, fresh, spareribs",3,1,277.0,15.47,23.4,0.0,272.48,g,,False,2,Thịt & Gia cầm
+167857,"Pork, fresh, variety meats and by-products, ears, frozen",Tai heo,10,Pork Products,"pork, fresh, variety meats and by-products, ears",4,1,234.0,22.45,15.1,0.6,228.1,g,,False,2,Thịt & Gia cầm
+167859,"Pork, fresh, variety meats and by-products, feet",Chân heo,10,Pork Products,"pork, fresh, variety meats and by-products, feet",4,1,212.0,23.16,12.59,0.0,205.95,g,,False,2,Thịt & Gia cầm
+168267,"Pork, fresh, variety meats and by-products, heart",Tim heo,10,Pork Products,"pork, fresh, variety meats and by-products, heart",4,1,118.0,17.27,4.36,1.33,113.64,g,,False,2,Thịt & Gia cầm
+168269,"Pork, fresh, variety meats and by-products, jowl",Thịt má heo,10,Pork Products,"pork, fresh, variety meats and by-products, jowl",4,1,655.0,6.38,69.61,0.0,652.01,g,,False,2,Thịt & Gia cầm
+168270,"Pork, fresh, variety meats and by-products, kidneys",Cật heo,10,Pork Products,"pork, fresh, variety meats and by-products, kidneys",4,1,100.0,16.46,3.25,0.0,95.09,g,,False,2,Thịt & Gia cầm
+167862,"Pork, fresh, variety meats and by-products, liver",Gan heo,10,Pork Products,"pork, fresh, variety meats and by-products, liver",4,1,134.0,21.39,3.65,2.47,128.29,g,,False,2,Thịt & Gia cầm
+167867,"Pork, fresh, variety meats and by-products, stomach",Bao tử heo,10,Pork Products,"pork, fresh, variety meats and by-products, stomach",4,1,159.0,16.85,10.14,0.0,158.66,g,,False,2,Thịt & Gia cầm
+168291,"Pork, fresh, variety meats and by-products, tail",Đuôi heo,10,Pork Products,"pork, fresh, variety meats and by-products, tail",4,1,378.0,17.75,33.5,0.0,372.5,g,,False,2,Thịt & Gia cầm
+168275,"Pork, fresh, variety meats and by-products, tongue",Lưỡi heo,10,Pork Products,"pork, fresh, variety meats and by-products, tongue",4,1,225.0,16.3,17.2,0.0,220.0,g,,False,2,Thịt & Gia cầm
+169190,"Pork, ground, 96% lean / 4% fat",Thịt heo xay nạc,10,Pork Products,"pork, ground",2,2,121.0,21.1,4.0,0.21,121.24,g,,False,2,Thịt & Gia cầm
+168385,Amaranth leaves,Rau dền,11,Vegetables and Vegetable Products,amaranth leaves,1,1,23.0,2.46,0.33,4.02,28.89,g,,True,1,Rau củ
+169205,"Artichokes, (globe or french)",Atisô,11,Vegetables and Vegetable Products,artichokes,1,1,47.0,3.27,0.15,10.51,56.47,g,,False,1,Rau củ
+168389,Asparagus,Măng tây,11,Vegetables and Vegetable Products,asparagus,1,1,20.0,2.2,0.12,3.88,25.4,g,,True,1,Rau củ
+168393,"Balsam-pear (bitter gourd), pods",Khổ qua,11,Vegetables and Vegetable Products,balsam-pear (bitter gourd),1,2,17.0,1.0,0.17,3.7,20.33,g,,False,1,Rau củ
+169210,Bamboo shoots,Măng tươi,11,Vegetables and Vegetable Products,bamboo shoots,1,1,27.0,2.6,0.3,5.2,33.9,g,,True,1,Rau củ
+169961,"Beans, snap, green",Đậu cô ve,11,Vegetables and Vegetable Products,"beans, snap",2,3,31.0,1.83,0.22,6.97,37.18,g,,False,1,Rau củ
+170379,Broccoli,Bông cải xanh,11,Vegetables and Vegetable Products,"broccoli, raw",2,1,34.0,2.82,0.37,6.64,41.17,g,,False,1,Rau củ
+169404,"Broccoli, chinese",Cải làn,11,Vegetables and Vegetable Products,"broccoli, chinese",2,1,26.0,1.2,0.76,4.67,30.32,g,,False,1,Rau củ
+169975,Cabbage,Bắp cải,11,Vegetables and Vegetable Products,"cabbage, raw",2,1,25.0,1.28,0.1,5.8,29.22,g,,False,1,Rau củ
+170390,"Cabbage, chinese (pak-choi)",Cải thìa,11,Vegetables and Vegetable Products,"cabbage, chinese (pak-choi)",2,1,13.0,1.5,0.2,2.18,16.52,g,,False,1,Rau củ
+169979,"Cabbage, chinese (pe-tsai)",Cải thảo,11,Vegetables and Vegetable Products,"cabbage, chinese (pe-tsai)",2,1,16.0,1.2,0.2,3.23,19.52,g,,False,1,Rau củ
+169977,"Cabbage, red",Bắp cải tím,11,Vegetables and Vegetable Products,"cabbage, red",2,1,31.0,1.43,0.16,7.37,36.64,g,,False,1,Rau củ
+170393,Carrots,Cà rốt,11,Vegetables and Vegetable Products,carrots,1,2,41.0,0.93,0.24,9.58,44.2,g,,False,1,Rau củ
+169985,Cassava,Khoai mì,11,Vegetables and Vegetable Products,cassava,1,1,160.0,1.36,0.28,38.06,160.2,g,,False,1,Rau củ
+169986,Cauliflower,Bông cải trắng,11,Vegetables and Vegetable Products,cauliflower,1,2,25.0,1.92,0.28,4.97,30.08,g,,False,1,Rau củ
+169988,Celery,Cần tây,11,Vegetables and Vegetable Products,celery,1,1,14.0,0.69,0.17,2.97,16.17,g,,False,1,Rau củ
+170402,"Chayote, fruit",Su su,11,Vegetables and Vegetable Products,chayote,1,1,19.0,0.82,0.13,4.51,22.49,g,,False,1,Rau củ
+169994,Chives,Lá hẹ,11,Vegetables and Vegetable Products,chives,1,2,30.0,3.27,0.73,4.35,37.05,g,,False,1,Rau củ
+169997,Coriander (cilantro) leaves,Ngò rí,11,Vegetables and Vegetable Products,coriander (cilantro) leaves,1,1,23.0,2.13,0.52,3.67,27.88,g,,False,1,Rau củ
+168538,"Corn, sweet, white",Ngô ngọt trắng,11,Vegetables and Vegetable Products,corn,1,2,86.0,3.22,1.18,19.02,99.58,g,,False,1,Rau củ
+169220,"Cowpeas (blackeyes), immature seeds",Đậu mắt đen non,11,Vegetables and Vegetable Products,cowpeas (blackeyes),1,1,90.0,2.95,0.35,18.83,90.27,g,,False,1,Rau củ
+169224,"Cowpeas, leafy tips",Ngọn lá đậu đũa,11,Vegetables and Vegetable Products,cowpeas,1,4,29.0,4.1,0.25,4.82,37.93,g,,True,1,Rau củ
+169225,"Cucumber, peeled",Dưa leo,11,Vegetables and Vegetable Products,cucumber,1,2,10.0,0.59,0.16,2.16,12.44,g,,False,1,Rau củ
+169228,Eggplant,Cà tím,11,Vegetables and Vegetable Products,eggplant,1,2,25.0,0.98,0.18,5.88,29.06,g,,False,1,Rau củ
+168581,"Fungi, Cloud ears, dried",Nấm mèo khô,11,Vegetables and Vegetable Products,fungi,1,1,284.0,9.25,0.73,73.01,335.61,g,,False,5,Đồ khô & Gạo
+169230,Garlic,Tỏi,11,Vegetables and Vegetable Products,garlic,1,1,149.0,6.36,0.5,33.06,162.18,g,,False,1,Rau củ
+169231,Ginger root,Gừng,11,Vegetables and Vegetable Products,ginger root,1,1,80.0,1.82,0.75,17.77,85.11,g,,False,1,Rau củ
+168414,"Gourd, dishcloth (towelgourd)",Mướp,11,Vegetables and Vegetable Products,gourd,1,2,20.0,1.2,0.2,4.35,24.0,g,,False,1,Rau củ
+169246,"Leeks, (bulb and lower leaf-portion)",Tỏi tây,11,Vegetables and Vegetable Products,leeks,1,2,61.0,1.5,0.3,14.15,65.3,g,,False,1,Rau củ
+168573,Lemon grass (citronella),Sả,11,Vegetables and Vegetable Products,lemon grass (citronella),1,1,99.0,1.82,0.49,25.31,112.93,g,,False,1,Rau củ
+169250,Lotus root,Củ sen,11,Vegetables and Vegetable Products,lotus root,1,1,74.0,2.6,0.1,17.23,80.22,g,,False,1,Rau củ
+169382,"Mushrooms, enoki",Nấm kim châm,11,Vegetables and Vegetable Products,"mushrooms, enoki",2,1,37.0,2.66,0.29,7.81,44.49,g,,False,1,Rau củ
+168580,"Mushrooms, oyster",Nấm sò,11,Vegetables and Vegetable Products,"mushrooms, oyster",2,1,33.0,3.31,0.41,6.09,41.29,g,,True,1,Rau củ
+169242,"Mushrooms, shiitake",Nấm đông cô,11,Vegetables and Vegetable Products,"mushrooms, shiitake",2,2,34.0,2.24,0.49,6.79,40.53,g,,False,1,Rau củ
+169251,"Mushrooms, white",Nấm mỡ,11,Vegetables and Vegetable Products,"mushrooms, white",2,2,22.0,3.09,0.34,3.26,28.46,g,,True,1,Rau củ
+169256,Mustard greens,Cải bẹ xanh,11,Vegetables and Vegetable Products,mustard greens,1,1,27.0,2.86,0.42,4.67,33.9,g,,True,1,Rau củ
+169260,Okra,Đậu bắp,11,Vegetables and Vegetable Products,okra,1,1,33.0,1.93,0.19,7.45,39.23,g,,False,1,Rau củ
+170000,Onions,Hành tây,11,Vegetables and Vegetable Products,"onions, raw",2,1,40.0,1.1,0.1,9.34,42.66,g,,False,1,Rau củ
+170005,"Onions, spring or scallions (includes tops and bulb)",Hành lá,11,Vegetables and Vegetable Products,"onions, spring or scallions (includes tops and bulb)",2,1,32.0,1.83,0.19,7.34,38.39,g,,False,1,Rau củ
+170008,"Onions, sweet",Hành tây ngọt,11,Vegetables and Vegetable Products,"onions, sweet",2,1,32.0,0.8,0.08,7.55,34.12,g,,False,1,Rau củ
+170007,"Onions, welsh",Hành ta,11,Vegetables and Vegetable Products,"onions, welsh",2,1,34.0,1.9,0.4,6.5,37.2,g,,False,1,Rau củ
+170006,"Onions, young green, tops only",Ngọn hành lá,11,Vegetables and Vegetable Products,"onions, young green",2,1,27.0,0.97,0.47,5.74,31.07,g,,False,1,Rau củ
+170416,"Parsley, fresh",Ngò tây,11,Vegetables and Vegetable Products,parsley,1,2,36.0,2.97,0.79,6.33,44.31,g,,False,1,Rau củ
+170419,"Peas, green",Đậu Hà Lan,11,Vegetables and Vegetable Products,peas,1,4,81.0,5.42,0.4,14.45,83.08,g,,False,1,Rau củ
+170106,"Peppers, hot chili, red",Ớt đỏ,11,Vegetables and Vegetable Products,"peppers, hot chili",2,2,40.0,1.87,0.44,8.81,46.68,g,,False,1,Rau củ
+168576,"Peppers, jalapeno",Ớt jalapeño,11,Vegetables and Vegetable Products,"peppers, jalapeno",2,1,29.0,0.91,0.37,6.5,32.97,g,,False,1,Rau củ
+169395,"Peppers, serrano",Ớt serrano,11,Vegetables and Vegetable Products,"peppers, serrano",2,1,32.0,1.74,0.44,6.7,37.72,g,,False,1,Rau củ
+170427,"Peppers, sweet, green",Ớt chuông xanh,11,Vegetables and Vegetable Products,"peppers, sweet, green",3,2,20.0,0.86,0.17,4.64,23.53,g,,False,1,Rau củ
+170108,"Peppers, sweet, red",Ớt chuông đỏ,11,Vegetables and Vegetable Products,"peppers, sweet, red",3,3,26.0,0.99,0.3,6.03,30.78,g,,False,1,Rau củ
+169383,"Peppers, sweet, yellow",Ớt chuông vàng,11,Vegetables and Vegetable Products,"peppers, sweet, yellow",3,1,27.0,1.0,0.21,6.32,31.17,g,,False,1,Rau củ
+170026,"Potatoes, flesh and skin",Khoai tây,11,Vegetables and Vegetable Products,"potatoes, flesh and skin",2,1,77.0,2.05,0.09,17.49,78.97,g,,False,1,Rau củ
+168448,Pumpkin,Bí đỏ,11,Vegetables and Vegetable Products,pumpkin,1,1,26.0,1.0,0.1,6.5,30.9,g,,False,1,Rau củ
+169270,Pumpkin flowers,Hoa bí,11,Vegetables and Vegetable Products,pumpkin flowers,1,1,15.0,1.03,0.07,3.28,17.87,g,,False,1,Rau củ
+169272,Pumpkin leaves,Ngọn bí,11,Vegetables and Vegetable Products,pumpkin leaves,1,1,19.0,3.15,0.4,2.33,25.52,g,,False,1,Rau củ
+169276,Radishes,Củ cải đỏ,11,Vegetables and Vegetable Products,"radishes, raw",2,1,16.0,0.68,0.1,3.4,17.22,g,,False,1,Rau củ
+168451,"Radishes, oriental",Củ cải trắng,11,Vegetables and Vegetable Products,"radishes, oriental",2,2,18.0,0.6,0.1,4.1,19.7,g,,False,1,Rau củ
+168457,"Seaweed, kelp",Rong biển kombu,11,Vegetables and Vegetable Products,"seaweed, kelp",2,1,43.0,1.68,0.56,9.57,50.04,g,,False,5,Đồ khô & Gạo
+170496,"Seaweed, wakame",Rong biển wakame,11,Vegetables and Vegetable Products,"seaweed, wakame",2,1,45.0,3.03,0.64,9.14,54.44,g,,False,5,Đồ khô & Gạo
+170499,Shallots,Hành tím,11,Vegetables and Vegetable Products,shallots,1,2,72.0,2.5,0.1,16.8,78.1,g,,False,1,Rau củ
+169282,"Soybeans, green",Đậu nành xanh,11,Vegetables and Vegetable Products,soybeans,1,3,147.0,12.95,6.8,11.05,157.2,g,,False,1,Rau củ
+168462,Spinach,Cải bó xôi,11,Vegetables and Vegetable Products,spinach,1,1,23.0,2.86,0.39,3.63,29.47,g,,True,1,Rau củ
+168565,"Squash, zucchini, baby",Bí ngòi non,11,Vegetables and Vegetable Products,"squash, zucchini",2,1,21.0,2.71,0.4,3.11,26.88,g,,True,1,Rau củ
+169303,Sweet potato leaves,Rau lang,11,Vegetables and Vegetable Products,sweet potato leaves,1,1,42.0,2.49,0.51,8.82,49.83,g,,False,1,Rau củ
+168482,"Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",Khoai lang,11,Vegetables and Vegetable Products,sweet potato,1,1,86.0,1.57,0.05,20.12,87.21,g,,False,1,Rau củ
+169308,Taro,Khoai môn,11,Vegetables and Vegetable Products,taro,1,2,112.0,1.5,0.2,26.46,113.64,g,,False,1,Rau củ
+168487,Taro leaves,Lá khoai môn,11,Vegetables and Vegetable Products,taro leaves,1,1,42.0,4.98,0.74,6.7,53.38,g,,True,1,Rau củ
+168489,Taro shoots,Dọc mùng,11,Vegetables and Vegetable Products,taro shoots,1,1,11.0,0.92,0.09,2.32,13.77,g,,False,1,Rau củ
+170456,"Tomatoes, green",Cà chua xanh,11,Vegetables and Vegetable Products,"tomatoes, green",2,1,23.0,1.2,0.2,5.1,27.0,g,,False,1,Rau củ
+170457,"Tomatoes, red, ripe, raw, year round average",Cà chua,11,Vegetables and Vegetable Products,"tomatoes, red",2,1,18.0,0.88,0.2,3.89,20.88,g,,False,1,Rau củ
+168583,"Wasabi, root",Củ wasabi,11,Vegetables and Vegetable Products,wasabi,1,1,109.0,4.8,0.63,23.54,119.03,g,,False,1,Rau củ
+169301,Water convolvulus,Rau muống,11,Vegetables and Vegetable Products,water convolvulus,1,1,19.0,2.6,0.2,3.13,24.72,g,,False,1,Rau củ
+170066,"Waterchestnuts, chinese, (matai)",Củ năng,11,Vegetables and Vegetable Products,waterchestnuts,1,1,97.0,1.4,0.1,23.94,102.26,g,,False,1,Rau củ
+170068,Watercress,Cải xoong,11,Vegetables and Vegetable Products,watercress,1,1,11.0,2.3,0.1,1.29,15.26,g,,False,1,Rau củ
+170069,"Waxgourd, (chinese preserving melon)",Bí đao,11,Vegetables and Vegetable Products,waxgourd,1,1,13.0,0.4,0.2,3.0,15.4,g,,False,1,Rau củ
+170071,Yam,Củ từ,11,Vegetables and Vegetable Products,yam,1,1,118.0,1.53,0.17,27.88,119.17,g,,False,1,Rau củ
+170073,Yambean (jicama),Củ đậu,11,Vegetables and Vegetable Products,yambean (jicama),1,1,38.0,0.72,0.09,8.82,38.97,g,,False,1,Rau củ
+169222,Yardlong bean,Đậu đũa,11,Vegetables and Vegetable Products,yardlong bean,1,1,47.0,2.8,0.4,8.35,48.2,g,,False,1,Rau củ
+170567,"Nuts, almonds",Hạnh nhân,12,Nut and Seed Products,"nuts, almonds",2,2,579.0,21.15,49.93,21.55,620.17,g,,False,9,Các loại Hạt
+170162,"Nuts, cashew nuts",Hạt điều,12,Nut and Seed Products,"nuts, cashew nuts",2,1,553.0,18.22,43.85,30.19,588.29,g,,False,9,Các loại Hạt
+170164,"Nuts, chestnuts, chinese",Hạt dẻ,12,Nut and Seed Products,"nuts, chestnuts, chinese",3,2,224.0,4.2,1.11,49.07,223.07,g,,False,9,Các loại Hạt
+170580,"Nuts, coconut cream, raw (liquid expressed from grated meat)",Nước cốt dừa đậm đặc,12,Nut and Seed Products,"nuts, coconut cream",2,1,330.0,3.63,34.68,6.65,353.24,g,,False,4,Gia vị & Nước chấm
+170169,"Nuts, coconut meat",Cùi dừa,12,Nut and Seed Products,"nuts, coconut meat, raw",3,1,354.0,3.33,33.49,15.23,375.65,g,,False,7,Trái cây
+170172,"Nuts, coconut milk, raw (liquid expressed from grated meat and water)",Nước cốt dừa,12,Nut and Seed Products,"nuts, coconut milk",2,1,230.0,2.29,23.84,5.54,245.88,g,,False,4,Gia vị & Nước chấm
+170174,"Nuts, coconut water (liquid from coconuts)",Nước dừa,12,Nut and Seed Products,"nuts, coconut water (liquid from coconuts)",2,1,19.0,0.72,0.2,3.71,19.52,g,,False,7,Trái cây
+170178,"Nuts, macadamia nuts",Hạt macadamia,12,Nut and Seed Products,"nuts, macadamia nuts",2,1,718.0,7.91,75.77,13.82,768.85,g,,False,9,Các loại Hạt
+168591,"Seeds, lotus seeds",Hạt sen,12,Nut and Seed Products,"seeds, lotus seeds",2,2,89.0,4.13,0.53,17.28,90.41,g,,False,9,Các loại Hạt
+170556,"Seeds, pumpkin and squash seed kernels, dried",Hạt bí,12,Nut and Seed Products,"seeds, pumpkin and squash seed kernels",2,1,559.0,30.23,49.05,10.71,605.21,g,,False,9,Các loại Hạt
+169412,"Seeds, sesame seed kernels, dried (decorticated)",Hạt mè bóc vỏ,12,Nut and Seed Products,"seeds, sesame seed kernels",2,3,631.0,20.45,61.21,11.73,679.61,g,,False,9,Các loại Hạt
+170150,"Seeds, sesame seeds, whole, dried",Hạt mè,12,Nut and Seed Products,"seeds, sesame seeds",2,1,573.0,17.73,49.67,23.45,611.75,g,,False,9,Các loại Hạt
+170562,"Seeds, sunflower seed kernels, dried",Hạt hướng dương,12,Nut and Seed Products,"seeds, sunflower seed kernels",2,3,584.0,20.78,51.46,20.0,626.26,g,,False,9,Các loại Hạt
+169407,"Seeds, watermelon seed kernels, dried",Hạt dưa hấu,12,Nut and Seed Products,"seeds, watermelon seed kernels",2,1,557.0,28.33,47.37,15.31,600.89,g,,False,9,Các loại Hạt
+168607,"Beef, brisket, whole, separable lean only, all grades",Thịt ức bò nạc,13,Beef Products,"beef, brisket, whole",3,2,157.0,20.72,7.37,0.6,151.61,g,,False,2,Thịt & Gia cầm
+170809,"Beef, chuck for stew, separable lean and fat, select",Thịt vai bò hầm,13,Beef Products,"beef, chuck for stew",2,3,124.0,21.9,3.99,0.21,124.35,g,,False,2,Thịt & Gia cầm
+168609,"Beef, flank, steak, separable lean only, trimmed to 0"" fat, choice",Thịt bò nạm,13,Beef Products,"beef, flank, steak, separable lean only",4,3,149.0,21.72,6.29,0.0,143.49,g,,False,2,Thịt & Gia cầm
+174036,"Beef, ground, 80% lean meat / 20% fat",Thịt bò xay,13,Beef Products,"beef, ground",2,5,254.0,17.17,20.0,0.0,248.68,g,,False,2,Thịt & Gia cầm
+168614,"Beef, rib, shortribs, separable lean only, choice",Sườn bò,13,Beef Products,"beef, rib, shortribs",3,2,175.0,19.05,10.19,0.4,169.51,g,,False,2,Thịt & Gia cầm
+169441,"Beef, shank crosscuts, separable lean only, trimmed to 1/4"" fat, choice",Bắp chân bò,13,Beef Products,"beef, shank crosscuts",2,1,128.0,21.75,3.85,0.0,121.65,g,,False,2,Thịt & Gia cầm
+171803,"Beef, tenderloin, steak, separable lean only, trimmed to 1/8"" fat, select",Thịt bò thăn nội,13,Beef Products,"beef, tenderloin, steak, separable lean only",4,3,148.0,22.06,5.93,0.0,141.61,g,,False,2,Thịt & Gia cầm
+168625,"Beef, variety meats and by-products, heart",Tim bò,13,Beef Products,"beef, variety meats and by-products, heart",3,1,112.0,17.72,3.94,0.14,106.9,g,,False,2,Thịt & Gia cầm
+169449,"Beef, variety meats and by-products, kidneys",Cật bò,13,Beef Products,"beef, variety meats and by-products, kidneys",3,1,99.0,17.4,3.09,0.29,98.57,g,,False,2,Thịt & Gia cầm
+169451,"Beef, variety meats and by-products, liver",Gan bò,13,Beef Products,"beef, variety meats and by-products, liver",3,1,135.0,20.36,3.63,3.89,129.67,g,,False,2,Thịt & Gia cầm
+170196,"Beef, variety meats and by-products, tongue",Lưỡi bò,13,Beef Products,"beef, variety meats and by-products, tongue",3,1,224.0,14.9,16.09,3.68,219.13,g,,False,2,Thịt & Gia cầm
+170599,"Beef, variety meats and by-products, tripe",Sách bò,13,Beef Products,"beef, variety meats and by-products, tripe",3,1,85.0,12.07,3.69,0.0,81.49,g,,False,2,Thịt & Gia cầm
+174204,"Crustaceans, crab, blue",Cua xanh,15,Finfish and Shellfish Products,"crustaceans, crab, blue",3,2,87.0,18.06,1.08,0.04,82.12,g,,False,3,Hải sản
+171968,"Crustaceans, crab, dungeness",Cua dungeness,15,Finfish and Shellfish Products,"crustaceans, crab, dungeness",3,1,86.0,17.41,0.97,0.74,81.33,g,,False,3,Hải sản
+175179,"Crustaceans, shrimp",Tôm,15,Finfish and Shellfish Products,"crustaceans, shrimp",2,2,85.0,20.1,0.51,0.0,84.99,g,,False,3,Hải sản
+174182,"Fish, anchovy, european",Cá cơm,15,Finfish and Shellfish Products,"fish, anchovy",2,1,131.0,20.35,4.84,0.0,124.96,g,,False,3,Hải sản
+171952,"Fish, carp",Cá chép,15,Finfish and Shellfish Products,"fish, carp",2,1,127.0,17.83,5.6,0.0,121.72,g,,False,3,Hải sản
+174186,"Fish, catfish, channel, wild",Cá trê,15,Finfish and Shellfish Products,"fish, catfish",2,2,95.0,16.38,2.82,0.0,90.9,g,,False,3,Hải sản
+171955,"Fish, cod, Atlantic",Cá tuyết,15,Finfish and Shellfish Products,"fish, cod",2,3,82.0,17.81,0.67,0.0,77.27,g,,False,3,Hải sản
+174193,"Fish, eel, mixed species",Cá chình,15,Finfish and Shellfish Products,"fish, eel",2,1,184.0,18.44,11.66,0.0,178.7,g,,False,3,Hải sản
+171962,"Fish, grouper, mixed species",Cá mú,15,Finfish and Shellfish Products,"fish, grouper",2,1,92.0,19.38,1.02,0.0,86.7,g,,False,3,Hải sản
+175119,"Fish, mackerel, Atlantic",Cá thu Đại Tây Dương,15,Finfish and Shellfish Products,"fish, mackerel, atlantic",3,1,205.0,18.6,13.89,0.0,199.41,g,,False,3,Hải sản
+173673,"Fish, mackerel, spanish",Cá thu,15,Finfish and Shellfish Products,"fish, mackerel, spanish",3,1,139.0,19.29,6.3,0.0,133.86,g,,False,3,Hải sản
+171959,"Fish, mahimahi",Cá nục heo,15,Finfish and Shellfish Products,"fish, mahimahi",2,1,85.0,18.5,0.7,0.0,80.3,g,,False,3,Hải sản
+173675,"Fish, milkfish",Cá măng sữa,15,Finfish and Shellfish Products,"fish, milkfish",2,1,148.0,20.53,6.73,0.0,142.69,g,,False,3,Hải sản
+175123,"Fish, mullet, striped",Cá đối,15,Finfish and Shellfish Products,"fish, mullet",2,1,117.0,19.35,3.79,0.0,111.51,g,,False,3,Hải sản
+175128,"Fish, pike, walleye",Cá vược vàng,15,Finfish and Shellfish Products,"fish, pike",2,2,93.0,19.14,1.22,0.0,87.54,g,,False,3,Hải sản
+175167,"Fish, salmon, Atlantic, farmed, raw",Cá hồi,15,Finfish and Shellfish Products,"fish, salmon, atlantic, farmed, raw",1,1,208.0,20.42,13.42,0.0,202.46,g,,False,3,Hải sản
+173698,"Fish, snapper, mixed species",Cá hồng,15,Finfish and Shellfish Products,"fish, snapper",2,1,100.0,20.51,1.34,0.0,94.1,g,,False,3,Hải sản
+175176,"Fish, tilapia",Cá rô phi,15,Finfish and Shellfish Products,"fish, tilapia",2,1,96.0,20.08,1.7,0.0,95.62,g,,False,3,Hải sản
+173706,"Fish, tuna, fresh, bluefin",Cá ngừ vây xanh,15,Finfish and Shellfish Products,"fish, tuna",2,3,144.0,23.33,4.9,0.0,137.42,g,,False,3,Hải sản
+168148,Frog legs,Đùi ếch,15,Finfish and Shellfish Products,frog legs,1,1,73.0,16.4,0.3,0.0,68.3,g,,False,3,Hải sản
+174214,"Mollusks, clam, mixed species",Nghêu,15,Finfish and Shellfish Products,"mollusks, clam",2,1,86.0,14.67,0.96,3.57,81.6,g,,False,3,Hải sản
+174215,"Mollusks, cuttlefish, mixed species",Mực nang,15,Finfish and Shellfish Products,"mollusks, cuttlefish",2,1,79.0,16.24,0.7,0.82,74.54,g,,False,3,Hải sản
+174216,"Mollusks, mussel, blue",Vẹm xanh,15,Finfish and Shellfish Products,"mollusks, mussel",2,1,86.0,11.9,2.24,3.69,82.52,g,,False,3,Hải sản
+174218,"Mollusks, octopus, common",Bạch tuộc,15,Finfish and Shellfish Products,"mollusks, octopus",2,1,82.0,14.91,1.04,2.2,77.8,g,,False,3,Hải sản
+174219,"Mollusks, oyster, Pacific",Hàu,15,Finfish and Shellfish Products,"mollusks, oyster",2,3,81.0,9.45,2.3,4.95,78.3,g,,False,3,Hải sản
+174220,"Mollusks, scallop, mixed species",Sò điệp,15,Finfish and Shellfish Products,"mollusks, scallop",2,1,69.0,12.06,0.49,3.18,65.37,g,,False,3,Hải sản
+167744,"Mollusks, snail",Ốc,15,Finfish and Shellfish Products,"mollusks, snail",2,1,90.0,16.1,1.4,2.0,85.0,g,,False,3,Hải sản
+174223,"Mollusks, squid, mixed species",Mực ống,15,Finfish and Shellfish Products,"mollusks, squid",2,1,92.0,15.58,1.38,3.08,87.06,g,,False,3,Hải sản
+173727,"Beans, adzuki, mature seeds",Đậu đỏ,16,Legumes and Legume Products,"beans, adzuki",2,1,329.0,19.87,0.53,62.9,335.85,g,,False,5,Đồ khô & Gạo
+175186,"Beans, black turtle, mature seeds",Đậu đen turtle,16,Legumes and Legume Products,"beans, black turtle",2,1,339.0,21.25,0.9,63.25,346.1,g,,False,5,Đồ khô & Gạo
+173734,"Beans, black, mature seeds",Đậu đen,16,Legumes and Legume Products,"beans, black",2,1,341.0,21.6,1.42,62.36,348.62,g,,False,5,Đồ khô & Gạo
+175193,"Beans, kidney, all types, mature seeds",Đậu tây,16,Legumes and Legume Products,"beans, kidney, all types",3,1,333.0,23.58,0.83,60.01,341.83,g,,False,5,Đồ khô & Gạo
+173744,"Beans, kidney, red, mature seeds",Đậu tây đỏ,16,Legumes and Legume Products,"beans, kidney, red",3,1,337.0,22.53,1.06,61.29,344.82,g,,False,5,Đồ khô & Gạo
+175202,"Beans, white, mature seeds",Đậu trắng,16,Legumes and Legume Products,"beans, white",2,1,333.0,23.36,0.85,60.27,342.17,g,,False,5,Đồ khô & Gạo
+173756,"Chickpeas (garbanzo beans, bengal gram), mature seeds",Đậu gà,16,Legumes and Legume Products,chickpeas (garbanzo beans,1,1,378.0,20.47,6.04,62.95,388.04,g,,False,5,Đồ khô & Gạo
+172420,Lentils,Đậu lăng,16,Legumes and Legume Products,lentils,1,3,352.0,24.63,1.06,63.35,361.46,g,,False,5,Đồ khô & Gạo
+172442,Miso,Tương miso,16,Legumes and Legume Products,miso,1,1,198.0,12.79,6.01,25.37,206.73,g,,False,4,Gia vị & Nước chấm
+174256,"Mung beans, mature seeds",Đậu xanh,16,Legumes and Legume Products,mung beans,1,2,347.0,23.86,1.15,62.62,356.27,g,,False,5,Đồ khô & Gạo
+174259,"Mungo beans, mature seeds",Đậu urad,16,Legumes and Legume Products,mungo beans,1,1,341.0,25.21,1.64,58.99,351.56,g,,False,5,Đồ khô & Gạo
+174263,"Peanuts, spanish",Đậu phộng,16,Legumes and Legume Products,peanuts,1,4,570.0,26.15,49.6,15.83,614.32,g,,False,9,Các loại Hạt
+174278,Soy sauce made from soy (tamari),Nước tương tamari,16,Legumes and Legume Products,soy sauce made from soy (tamari),1,1,60.0,10.51,0.1,5.57,65.22,g,,False,4,Gia vị & Nước chấm
+174277,Soy sauce made from soy and wheat (shoyu),Nước tương,16,Legumes and Legume Products,soy sauce made from soy and wheat (shoyu),1,2,53.0,8.14,0.57,4.93,57.41,g,,False,4,Gia vị & Nước chấm
+169083,"Soybean, curd cheese",Chao,16,Legumes and Legume Products,soybean,1,1,151.0,12.5,8.1,6.9,150.5,g,,False,5,Đồ khô & Gạo
+172475,"Tofu, raw, firm, prepared with calcium sulfate",Đậu hũ cứng,16,Legumes and Legume Products,tofu,1,3,144.0,17.27,8.72,2.78,158.68,g,,False,5,Đồ khô & Gạo
+172476,"Tofu, raw, regular, prepared with calcium sulfate",Đậu hũ,16,Legumes and Legume Products,"tofu, raw, regular, prepared with calcium sulfate",1,1,76.0,8.08,4.78,1.87,82.82,g,,False,5,Đồ khô & Gạo
+169884,"Vermicelli, made from soy",Miến đậu nành,16,Legumes and Legume Products,vermicelli,1,1,331.0,0.1,0.1,82.32,330.58,g,,False,5,Đồ khô & Gạo
+174283,"Winged beans, mature seeds",Đậu rồng,16,Legumes and Legume Products,winged beans,1,2,409.0,29.65,16.32,41.71,432.32,g,,False,5,Đồ khô & Gạo
+174281,"Yardlong beans, mature seeds",Hạt đậu đũa,16,Legumes and Legume Products,yardlong beans,1,1,347.0,24.33,1.31,61.91,356.75,g,,False,5,Đồ khô & Gạo
+169640,Honey,Mật ong,19,Sweets,honey,1,1,304.0,0.3,0.0,82.4,330.8,g,,False,4,Gia vị & Nước chấm
+168820,Molasses,Mật mía,19,Sweets,molasses,1,1,290.0,0.0,0.1,74.73,299.82,g,,False,4,Gia vị & Nước chấm
+168833,"Sugars, brown",Đường nâu,19,Sweets,sugars,1,3,380.0,0.12,0.0,98.09,392.84,g,,False,4,Gia vị & Nước chấm
+169655,"Sugars, granulated",Đường cát trắng,19,Sweets,"sugars, granulated",1,1,387.0,0.0,0.0,99.98,399.92,g,,False,4,Gia vị & Nước chấm
+169748,"Corn flour, whole-grain, white",Bột ngô trắng,20,Cereal Grains and Pasta,"corn flour, whole-grain",2,3,361.0,6.93,3.86,76.85,369.86,g,,False,5,Đồ khô & Gạo
+168920,"Corn grain, white",Hạt ngô trắng,20,Cereal Grains and Pasta,corn grain,1,2,365.0,9.42,4.74,74.26,377.38,g,,False,5,Đồ khô & Gạo
+169750,"Cornmeal, whole-grain, white",Bột ngô thô trắng,20,Cereal Grains and Pasta,"cornmeal, whole-grain",2,2,362.0,8.12,3.59,76.89,372.35,g,,False,5,Đồ khô & Gạo
+169698,Cornstarch,Tinh bột ngô,20,Cereal Grains and Pasta,cornstarch,1,1,381.0,0.26,0.05,91.27,366.57,g,,False,5,Đồ khô & Gạo
+168905,"Noodles, chinese, chow mein",Mì xào chow mein,20,Cereal Grains and Pasta,"noodles, chinese",2,2,471.0,10.88,21.24,63.64,489.24,g,,False,5,Đồ khô & Gạo
+168898,"Rice flour, brown",Bột gạo lứt,20,Cereal Grains and Pasta,rice flour,1,2,363.0,7.23,2.78,76.48,359.86,g,,False,5,Đồ khô & Gạo
+169742,"Rice noodles, dry",Bún gạo khô,20,Cereal Grains and Pasta,rice noodles,1,1,364.0,5.95,0.56,80.18,349.56,g,,False,5,Đồ khô & Gạo
+169703,"Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)",Gạo lứt,20,Cereal Grains and Pasta,"rice, brown",2,2,367.0,7.54,3.2,76.25,363.96,g,,False,5,Đồ khô & Gạo
+168877,"Rice, white, long-grain, regular, raw, enriched",Gạo trắng,20,Cereal Grains and Pasta,"rice, white, long-grain",3,2,365.0,7.13,0.66,79.95,354.26,g,,False,5,Đồ khô & Gạo
+169717,"Tapioca, pearl, dry",Bột báng,20,Cereal Grains and Pasta,tapioca,1,1,358.0,0.19,0.02,88.69,355.7,g,,False,5,Đồ khô & Gạo
+169761,"Wheat flour, white, all-purpose, unenriched",Bột mì đa dụng,20,Cereal Grains and Pasta,"wheat flour, white, all-purpose",3,4,364.0,10.33,0.98,76.31,355.38,g,,False,5,Đồ khô & Gạo
+168896,"Wheat flour, white, bread, enriched",Bột mì làm bánh mì,20,Cereal Grains and Pasta,"wheat flour, white, bread",3,1,361.0,11.98,1.66,72.53,352.98,g,,False,5,Đồ khô & Gạo
+168893,"Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)",Bột mì nguyên cám,20,Cereal Grains and Pasta,"wheat flour, whole-grain (includes foods for usda's food distribution program)",2,1,340.0,13.21,2.5,71.97,363.22,g,,False,5,Đồ khô & Gạo
