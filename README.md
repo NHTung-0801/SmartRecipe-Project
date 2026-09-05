@@ -9,14 +9,33 @@ Một web application hiện đại đóng vai trò như **trợ lý bếp núc 
 ## 📋 Mục lục
 
 - [Mục tiêu & Đối tượng](#-mục-tiêu--đối-tượng)
+- [Hệ thống Repositories (Git Submodules)](#-hệ-thống-repositories-git-submodules)
 - [Tổng quan hệ thống](#-tổng-quan-hệ-thống)
 - [Tech Stack](#-tech-stack)
-- [Cấu trúc Monorepo](#-cấu-trúc-monorepo)
+- [Cấu trúc Thư mục & Submodules](#-cấu-trúc-thư-mục--git-submodules)
 - [Tiến độ dự án (6 Sprints)](#-tiến-độ-dự-án-6-sprints)
 - [Pipeline Dữ liệu Nguyên liệu](#-pipeline-dữ-liệu-nguyên-liệu-usda--việt-nam)
-- [Thiết lập môi trường](#-thiết-lập-môi-trường-local)
+- [Thiết lập môi trường Local](#-thiết-lập-môi-trường-local)
 - [Nạp Dữ liệu Nguyên liệu](#-nạp-dữ-liệu-nguyên-liệu)
 - [Tài liệu chi tiết](#-tài-liệu-chi-tiết)
+
+---
+
+## 🔗 Hệ thống Repositories (Git Submodules)
+
+Dự án được tổ chức theo kiến trúc **Umbrella Repository** quản lý 2 repo độc lập thông qua **Git Submodules**:
+
+| Repository | GitHub Link | Công nghệ chính | Vai trò |
+|---|---|---|---|
+| **Mẹ (Root)** | [SmartRecipe-Project](https://github.com/NHTung-0801/SmartRecipe-Project) | Git Submodules, Docker Compose | Quản lý tài liệu tổng thể, data pipeline USDA, orchestration toàn dự án |
+| **Backend** | [smartrecipe-backend](https://github.com/NHTung-0801/smartrecipe-backend) | Spring Boot 4, Java 21, MySQL, Redis | Cung cấp RESTful API, AI Gemini integration, Auth JWT, Business logic |
+| **Frontend** | [smartrecipe-frontend](https://github.com/NHTung-0801/smartrecipe-frontend) | React 19, Vite 8, Tailwind v4, Zustand | Giao diện người dùng SPA, trải nghiệm nấu ăn, AI Assistant UI |
+
+> 💡 **Cách clone trọn vẹn cả 3 repository trong 1 lệnh:**
+> ```bash
+> git clone --recurse-submodules https://github.com/NHTung-0801/SmartRecipe-Project.git
+> ```
+> *Nếu đã clone trước đó mà chưa có submodule, chỉ cần chạy:* `git submodule update --init --recursive`
 
 ---
 
@@ -132,60 +151,63 @@ Người Việt thường gặp ba bài toán lặp đi lặp lại hàng ngày:
 
 ---
 
-## 📁 Cấu trúc Monorepo
+## 📁 Cấu trúc Thư mục & Git Submodules
+
+Dự án sử dụng mô hình **Git Submodules** — thư mục gốc kết nối và quản lý 2 kho mã nguồn độc lập trên GitHub:
 
 ```
-SmartRecipe-Project/
+SmartRecipe-Project/                      # 🔗 Umbrella Repository
 │
-├── smartrecipe-backend/        # Spring Boot API (Java 21)
-│   ├── src/main/java/          # Source code (9 packages)
-│   ├── src/main/resources/     # application.yaml
-│   ├── .docker/Dockerfile      # Production Docker image
-│   ├── pom.xml                 # Maven dependencies
-│   └── README.md               # ← Chi tiết backend
+├── smartrecipe-backend/                  # 🔗 Git Submodule → github.com/NHTung-0801/smartrecipe-backend
+│   ├── src/main/java/                    # Source code Java 21 (9 packages)
+│   ├── src/main/resources/               # application.yaml & seed data
+│   ├── .docker/Dockerfile                # Production Docker image (Render/Cloud)
+│   ├── .env                              # Biến môi trường local (tự động nạp qua dotenv-java, git-ignored)
+│   ├── pom.xml                           # Maven dependencies
+│   └── README.md                         # ← [Chi tiết kiến trúc & API Backend](https://github.com/NHTung-0801/smartrecipe-backend)
 │
-├── smartrecipe-frontend/       # React SPA (Vite 8)
-│   ├── src/                    # Source code (pages, components, services...)
-│   ├── vite.config.js
-│   ├── package.json
-│   └── README.md               # ← Chi tiết frontend
+├── smartrecipe-frontend/                 # 🔗 Git Submodule → github.com/NHTung-0801/smartrecipe-frontend
+│   ├── src/                              # Source code React 19 SPA (pages, components, stores...)
+│   ├── vite.config.js                    # Vite 8 bundle configuration
+│   ├── package.json                      # Dependencies & NPM scripts
+│   └── README.md                         # ← [Chi tiết kiến trúc & Component Frontend](https://github.com/NHTung-0801/smartrecipe-frontend)
 │
-├── sql/                        # Database scripts
-│   ├── init_database.sql       # Khởi tạo 18 bảng + 9 kệ + 6 tags + unit conversions
-│   └── seed_ingredients.sql    # 290 nguyên liệu từ USDA (sinh bởi tools/)
+├── sql/                                  # Database migration scripts
+│   ├── init_database.sql                 # Khởi tạo 18 bảng + 9 kệ + 6 tags + unit conversions
+│   └── seed_ingredients.sql              # 290 nguyên liệu từ USDA (sinh bởi tools/)
 │
-├── Dataset/                    # Dữ liệu gốc USDA FoodData Central
+├── Dataset/                              # Dữ liệu gốc USDA FoodData Central
 │   ├── FoodData_Central_sr_legacy_food_csv_2018-04/
-│   │   ├── food.csv            # ~8.000 thực phẩm thô
-│   │   ├── food_nutrient.csv   # ~600.000 dòng dinh dưỡng (36 MB)
-│   │   ├── food_category.csv   # 25 nhóm thực phẩm
-│   │   ├── nutrient.csv        # Định nghĩa 150+ chất dinh dưỡng
-│   │   └── food_portion.csv    # Khẩu phần tham chiếu
-│   ├── ingredients_to_translate.csv  # 290 nguyên liệu sau xử lý (đã dịch)
-│   └── dropped_ingredients.csv       # ~1.500 nguyên liệu đã loại + lý do
+│   │   ├── food.csv                      # ~8.000 thực phẩm thô
+│   │   ├── food_nutrient.csv             # ~600.000 dòng dinh dưỡng (36 MB)
+│   │   ├── food_category.csv             # 25 nhóm thực phẩm
+│   │   ├── nutrient.csv                  # Định nghĩa 150+ chất dinh dưỡng
+│   │   └── food_portion.csv              # Khẩu phần tham chiếu
+│   ├── ingredients_to_translate.csv      # 290 nguyên liệu sau xử lý (đã dịch tiếng Việt)
+│   └── dropped_ingredients.csv           # ~1.500 nguyên liệu đã loại + lý do
 │
-├── tools/                      # Python data pipeline scripts
-│   ├── clean_ingredients.py    # Giai đoạn 1: Lọc + join dinh dưỡng từ USDA
-│   ├── suggest_keep.py         # Giai đoạn 2: Luật lọc nguyên liệu phù hợp bếp Việt
-│   ├── collapse_groups.py      # Giai đoạn 2: Gộp nhóm biến thể (bò xay 70% → bò xay)
-│   ├── export_batches.py       # Giai đoạn 2: Chia batch để dịch thủ công
-│   ├── translate_helper.py     # Giai đoạn 2: Hỗ trợ dịch Anh → Việt
-│   ├── assign_aisles.py        # Giai đoạn 3: Gán 9 kệ hàng theo 2 lớp logic
-│   ├── add_missing_essentials.py # Thêm nguyên liệu thiết yếu bị lọc nhầm
-│   ├── add_salmon.py           # Thêm Cá hồi từ USDA fdc_id 175167
-│   ├── repair_csv.py           # Sửa CSV bị Excel làm hỏng encoding
-│   ├── verify_dataset.py       # Kiểm tra toàn vẹn dataset trước khi seed
-│   └── gen_seed_sql.py         # Giai đoạn 4: Sinh seed_ingredients.sql
+├── tools/                                # Python data pipeline scripts (USDA → Vietnamese Dataset)
+│   ├── clean_ingredients.py              # Giai đoạn 1: Lọc + join dinh dưỡng từ USDA
+│   ├── suggest_keep.py                   # Giai đoạn 2: Luật lọc nguyên liệu phù hợp bếp Việt
+│   ├── collapse_groups.py                # Giai đoạn 2: Gộp nhóm biến thể (bò xay 70% → bò xay)
+│   ├── export_batches.py                 # Giai đoạn 2: Chia batch để dịch thủ công
+│   ├── translate_helper.py               # Giai đoạn 2: Hỗ trợ dịch Anh → Việt
+│   ├── assign_aisles.py                  # Giai đoạn 3: Gán 9 kệ hàng theo 2 lớp logic
+│   ├── add_missing_essentials.py         # Thêm nguyên liệu thiết yếu bị lọc nhầm
+│   ├── add_salmon.py                     # Thêm Cá hồi từ USDA fdc_id 175167
+│   ├── repair_csv.py                     # Sửa CSV bị Excel làm hỏng encoding
+│   ├── verify_dataset.py                 # Kiểm tra toàn vẹn dataset trước khi seed
+│   └── gen_seed_sql.py                   # Giai đoạn 4: Sinh seed_ingredients.sql
 │
-├── docs/                       # Tài liệu thiết kế & kế hoạch
-│   ├── project_master_plan.md
-│   ├── implementation_plan.md
-│   ├── sprint4_plan.md
+├── docs/                                 # Tài liệu kế hoạch & kiến trúc
+│   ├── project_master_plan.md            # Kế hoạch tổng thể 6 Sprints
+│   ├── deployment_plan.md                # Kế hoạch CI/CD & Cloud Deployment (Render/Vercel/TiDB)
+│   ├── sprint5_roadmap_update.md         # Nghiệm thu tiến độ Sprint 5
 │   └── ...
 │
-├── backup/                     # Database backups trước khi thay đổi lớn
-├── docker-compose.yml          # Định nghĩa 4 services (mysql, redis, backend, frontend)
-└── README.md                   # ← File này
+├── .gitmodules                           # Đăng ký Git Submodules cho backend và frontend
+├── docker-compose.yml                    # Định nghĩa 4 services (mysql, redis, backend, frontend)
+└── README.md                             # ← File tài liệu tổng quan này
 ```
 
 ---
@@ -197,10 +219,10 @@ Chiến lược phát triển: **Backend trước → Frontend sau** cho mỗi S
 ```
 Sprint 1 ████████████████████ 100%  Auth & Security (JWT, Login, Register)
 Sprint 2 ████████████████████ 100%  Users, Profile, Master Data, Redis Cache
-Sprint 3 ████████████████████ 100%  Recipe Engine (CRUD, Feed, Clone, Export)
-Sprint 4 ████████████████████ 100%  Pantry & Smart Grocery List
-Sprint 5 ██████████████████░░  90%  AI Assistant, Cooking Journal (đang hoàn thiện)
-Sprint 6 ░░░░░░░░░░░░░░░░░░░░   0%  Community, Deploy
+Sprint 3 ████████████████████ 100%  Recipe Engine (CRUD, Feed, Clone, Export Word)
+Sprint 4 ████████████████████ 100%  Pantry & Smart Grocery List (Quy đổi đơn vị BFS)
+Sprint 5 ████████████████████ 100%  AI Assistant, Unit Normalization, Dynamic Nutrition, Journal
+Sprint 6 ░░░░░░░░░░░░░░░░░░░░   0%  CI/CD Pipeline, Cloud Deployment & Launch
 ```
 
 ### ✅ Sprint 1 — Auth & Security
@@ -230,21 +252,22 @@ Sprint 6 ░░░░░░░░░░░░░░░░░░░░   0%  Comm
 - Tự động cập nhật tủ khi đánh dấu "Đã hoàn thành đi chợ"
 - 9/9 unit tests Pantry service xanh
 
-### 🔄 Sprint 5 — AI Assistant & Cooking Journal (đang hoàn thiện)
-- ✅ Gemini `gemini-2.0-flash` tích hợp qua `GeminiClient`
-- ✅ Rate limiting AI 10 lần/ngày/user qua Redis
-- ✅ 3-layer ingredient matching: Exact → Token → Auto-create
-- ✅ `CookingJournalPage.jsx` với Timeline UI + `JournalDetailPage.jsx`
-- ✅ Xử lý lỗi `AiServiceException` (503) + `AccessDeniedException` (403 thay vì 500)
-- ✅ `GET /ai/history`, `GET /ai/remaining` — 38/38 unit test backend xanh
-- ✅ Phân quyền `POST /ingredients` chỉ ADMIN; user thường dùng `POST /ingredients/quick`
-- ✅ Test runner frontend: Vitest + Testing Library — 17/17 test xanh
-- 🔄 Bộ lọc admin cho nguyên liệu `calories = 0` (loại trừ nhóm gia vị như Muối)
+### ✅ Sprint 5 — AI Assistant, Dynamic Nutrition & Cooking Journal
+- ✅ **Google Gemini AI:** Tích hợp `gemini-3-flash-preview` / `gemini-2.0-flash` qua `GeminiClient`
+- ✅ **Khả năng chịu lỗi (Error Resilience):** `AiServiceException` (HTTP 503), timeout 30s qua `JdkClientHttpRequestFactory`
+- ✅ **Rate Limiting & Timezone:** 10 lượt/ngày/user qua Redis, tự động reset chuẩn xác lúc 00:00 múi giờ `Asia/Ho_Chi_Minh`
+- ✅ **Lịch sử gợi ý AI:** Endpoint `GET /api/v1/ai/history`, Tab "Lịch sử gợi ý AI" trên UI hỗ trợ xem lại và lưu công thức vào sổ tay
+- ✅ **Chuẩn hóa đơn vị & Dinh dưỡng AI:** Gemini ước tính calo/macro per-ingredient; `UnitNormalizationService` tự động đổi `quả`, `muỗng`, `chén` $\rightarrow$ baseUnit grams khi lưu
+- ✅ **Tính toán Dinh dưỡng Động (Dynamic Nutrition):** Tính chính xác calo/đạm/béo/carb từ dataset và tỉ lệ gram thực tế; loại bỏ hoàn toàn giá trị tĩnh/mock
+- ✅ **Tự động nạp `.env`:** Nạp cấu hình tự động khi khởi động qua `dotenv-java`, bảo vệ bí mật 100% không lưu vào git
+- ✅ **UI/UX AI:** Căn chỉnh 3 tab chức năng đều nhau, tối ưu độ tương phản hover màu gạch nung `#a13923`
+- ✅ **Kiểm thử toàn diện:** 38/38 unit tests Backend xanh (`BUILD SUCCESS`), 17/17 tests Frontend Vitest xanh, production build bundle thành công
 
-### ⏳ Sprint 6 — Community & Deploy
-- API Like, Comment với nested threads
-- Notification system
-- Deploy: Vercel (Frontend), Railway (Backend), PlanetScale/TiDB (MySQL)
+### 🚀 Sprint 6 — CI/CD Pipeline, Cloud Deployment & Launch (Sẵn sàng)
+- Thiết lập GitHub Actions CI cho Backend (Java 21, Maven test & package)
+- Thiết lập GitHub Actions CI cho Frontend (Node 20, Vitest & Vite build)
+- Triển khai Production: Render Web Service (Backend), Vercel (Frontend), TiDB Cloud (MySQL Serverless)
+- Chi tiết lộ trình: Xem tài liệu [docs/deployment_plan.md](./docs/deployment_plan.md)
 
 ---
 
@@ -375,6 +398,17 @@ MySQL 8.0 mặc định dùng `utf8mb4_0900_ai_ci` (accent-insensitive) — khi�
 - Node.js 20+ / npm 10+
 - Python 3.10+ (chỉ cần nếu muốn chạy lại data pipeline)
 
+### Bước 0 — Clone dự án kèm Submodules
+
+```bash
+# Clone toàn bộ repo mẹ và tự động kéo 2 repo con Backend + Frontend
+git clone --recurse-submodules https://github.com/NHTung-0801/SmartRecipe-Project.git
+cd SmartRecipe-Project
+
+# Nếu đã clone trước đó mà chưa có thư mục con:
+git submodule update --init --recursive
+```
+
 ### Bước 1 — Khởi động Database & Cache
 
 ```bash
@@ -391,11 +425,13 @@ cd smartrecipe-backend
 cp .env.example .env    # Điền GEMINI_API_KEY, Cloudinary credentials
 ```
 
+> 💡 **Tự động nạp cấu hình:** Backend đã tích hợp `dotenv-java` — ứng dụng tự động nạp các biến trong file `.env` vào bộ nhớ khi khởi động mà không cần sửa file `application.yaml`. File `.env` được bảo vệ an toàn qua `.gitignore`.
+
 ### Bước 3 — Chạy Backend
 
 ```bash
 # Trong smartrecipe-backend/
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 
 API tại `http://localhost:8080`.
@@ -490,8 +526,12 @@ VITE_API_BASE_URL=http://localhost:8080/api/v1
 
 | Tài liệu | Nội dung |
 |---|---|
+| [🔗 Backend Repo](https://github.com/NHTung-0801/smartrecipe-backend) | Kho mã nguồn Backend (Spring Boot 4, Java 21, REST API) |
+| [🔗 Frontend Repo](https://github.com/NHTung-0801/smartrecipe-frontend) | Kho mã nguồn Frontend (React 19, Vite 8, Tailwind v4, SPA) |
 | [Backend README](./smartrecipe-backend/README.md) | Kiến trúc, API endpoints, luồng Auth, luồng AI, Redis cache |
 | [Frontend README](./smartrecipe-frontend/README.md) | Kiến trúc, routing, state management, luồng đi chợ, design system |
+| [docs/deployment_plan.md](./docs/deployment_plan.md) | **Kế hoạch CI/CD & Triển khai Cloud (Render, Vercel, TiDB Cloud)** |
+| [docs/sprint5_roadmap_update.md](./docs/sprint5_roadmap_update.md) | Nghiệm thu và cập nhật tiến độ chi tiết Sprint 5 |
 | [docs/project_master_plan.md](./docs/project_master_plan.md) | Kế hoạch tổng thể 6 Sprints |
 | [docs/implementation_plan.md](./docs/implementation_plan.md) | Kế hoạch triển khai chi tiết |
 | [docs/sprint4_plan.md](./docs/sprint4_plan.md) | Thiết kế Pantry & Grocery |
