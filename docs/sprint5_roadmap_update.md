@@ -83,22 +83,23 @@
 
 Đây là những điểm tôi phát hiện sau khi rà soát source code thực tế, **nên xử lý trước hoặc trong lúc làm Frontend** để hệ thống chạy trơn tru:
 
-### 3.1 — Xử lý lỗi khi Gemini API gặp sự cố (Error Resilience)
-> **Vấn đề:** Hiện tại `GeminiClient.generate()` sẽ throw `RuntimeException` nếu Gemini API timeout, trả về JSON sai cấu trúc, hoặc Google API bị gián đoạn. Frontend sẽ nhận được lỗi 500 chung chung (`Internal Server Error`).
-- [ ] Tạo `AiServiceException` riêng (extend RuntimeException) để phân biệt lỗi AI với lỗi hệ thống khác.
-- [ ] Thêm handler trong `GlobalExceptionHandler` trả về HTTP 503 (Service Unavailable) kèm message thân thiện: "Trợ lý AI tạm thời không khả dụng, vui lòng thử lại sau."
-- [ ] Thêm timeout cho `RestClient` trong `GeminiConfig` (ví dụ: 30 giây) để tránh treo thread vô hạn.
+### 3.1 — Xử lý lỗi khi Gemini API gặp sự cố (Error Resilience) ✅
+> **Đã hoàn thành** *(xác nhận qua code review 05/09/2026)*
+- [x] `AiServiceException.java` đã tạo (extend RuntimeException).
+- [x] Handler trong `GlobalExceptionHandler` trả về HTTP 503 kèm message thân thiện.
+- [x] `GeminiConfig` đã cấu hình `connectTimeout=5s`, `readTimeout=30s` qua `JdkClientHttpRequestFactory`.
 
-### 3.2 — Endpoint lấy lịch sử gợi ý AI (AI History)
-> **Vấn đề:** Hiện tại Backend lưu log đầy đủ vào bảng `ai_suggestion_logs`, nhưng **không có endpoint nào** cho Frontend lấy lại lịch sử gợi ý cũ. User không thể xem lại món AI đã gợi ý hôm qua.
-- [ ] Thêm endpoint `GET /api/v1/ai/history` vào `AiController` (phân trang, sắp xếp theo ngày mới nhất).
-- [ ] Tạo `AiHistoryResponse` DTO (logId, type, title từ outputResponse, createdAt, đã lưu hay chưa).
-- [ ] Trên Frontend: hiển thị lịch sử gợi ý ở một tab thứ 3 "Lịch sử" hoặc phần dưới trang AI.
+### 3.2 — Endpoint lấy lịch sử gợi ý AI (AI History) ✅
+> **Đã hoàn thành** *(xác nhận qua code review 05/09/2026)*
+- [x] Endpoint `GET /api/v1/ai/history` đã có trong `AiController`.
+- [x] `AiHistoryResponse.java` DTO đã tạo.
+- [ ] Trên Frontend: hiển thị lịch sử gợi ý ở tab thứ 3 *(tùy chọn — có thể làm sau)*.
 
-### 3.3 — Endpoint đếm lượt còn lại (Rate Limit Info)
-> **Vấn đề:** Frontend cần biết user đã dùng bao nhiêu lượt / còn bao nhiêu lượt trong ngày để hiển thị UI (ví dụ: "Còn 7/10 lượt hôm nay"). Hiện tại chỉ biết khi đã bị lỗi 429.
-- [ ] Thêm endpoint `GET /api/v1/ai/remaining` trả về `{ used: 3, limit: 10, remaining: 7 }`.
-- [ ] Gọi endpoint này mỗi khi user vào trang AI Suggestion, hiển thị badge/counter trên UI.
+### 3.3 — Endpoint đếm lượt còn lại (Rate Limit Info) ✅
+> **Đã hoàn thành** *(xác nhận qua code review 05/09/2026)*
+- [x] Endpoint `GET /api/v1/ai/remaining` đã có trong `AiController`, trả về `{ used, limit, remaining }`.
+- [x] `AiRemainingResponse.java` DTO đã tạo.
+- [x] `AiSuggestionPage.jsx` gọi endpoint này khi mở trang để hiển thị counter.
 
 ---
 
