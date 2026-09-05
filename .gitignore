@@ -1,6 +1,4 @@
-# Bỏ qua 2 thư mục con vì chúng đã là 2 repo Git độc lập
-smartrecipe-backend/
-smartrecipe-frontend/
+# Submodules (smartrecipe-backend, smartrecipe-frontend) được quản lý qua .gitmodules
 stitch_smart_recipe_platform/
 
 # Bỏ qua các file tạm thời, file mô tả không cần up lên

@@ -1,0 +1,8 @@
+[submodule "smartrecipe-backend"]
+	path = smartrecipe-backend
+	url = https://github.com/NHTung-0801/smartrecipe-backend.git
+	branch = main
+[submodule "smartrecipe-frontend"]
+	path = smartrecipe-frontend
+	url = https://github.com/NHTung-0801/smartrecipe-frontend.git
+	branch = main
