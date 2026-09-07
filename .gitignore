@@ -54,5 +54,10 @@ backup/
 # Dữ liệu nội bộ của agent, không thuộc source code
 brain/
 
+# Báo cáo nội bộ chứa thông tin nhạy cảm / credentials / secrets
+private_reports/
+*.private.*
+*CONFIDENTIAL*
+
 # File tạm khi smoke test / kiểm tra DB
 tmp_*
