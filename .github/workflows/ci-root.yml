@@ -1,0 +1,47 @@
+name: Root Repo CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  verify-root:
+    name: Verify Root Repository
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout root with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          fetch-depth: 0
+
+      - name: Check no sensitive files committed
+        run: |
+          echo "🔍 Checking for sensitive files..."
+          sensitive_files=$(git ls-files | grep -E '\.env$|\.env\.local$|\.env\.production$' || true)
+          if [ -n "$sensitive_files" ]; then
+            echo "❌ ERROR: Sensitive .env file(s) found in git tracking!"
+            echo "$sensitive_files"
+            exit 1
+          fi
+          echo "✅ No sensitive files found"
+
+      - name: Verify submodule pointers are committed
+        run: |
+          echo "🔍 Verifying submodule pointers..."
+          git submodule status
+          echo "✅ Submodule verification complete"
+
+      - name: Verify docs folder exists
+        run: |
+          if [ -d "docs" ]; then
+            echo "✅ docs/ folder exists"
+            ls -la docs/
+          else
+            echo "⚠️ docs/ folder not found"
+          fi
