@@ -196,9 +196,9 @@ Hệ thống sẽ hoạt động linh hoạt theo **2 trạng thái người dù
 
 ### 📊 GIAI ĐOẠN 5: TRANG KHÁM PHÁ (TRENDING) & HOÀN THIỆN ADMIN
 
-#### Task 5.1: Backend & Frontend hỗ trợ lọc công thức Phổ biến nhất (Trending)
-- Backend [`RecipeController.java`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-backend/src/main/java/com/smartrecipe/smartrecipe_backend/controller/RecipeController.java) & [`RecipeServiceImpl.java`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-backend/src/main/java/com/smartrecipe/smartrecipe_backend/service/impl/RecipeServiceImpl.java): Nhận tham số `sortBy` (`createdAt` | `likeCount`).
-- Frontend [`HomePage.jsx`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-frontend/src/pages/HomePage.jsx): Thêm 2 Tab chuyển đổi "🕐 Mới nhất" và "🔥 Phổ biến nhất".
+#### Task 5.1: Backend & Frontend hỗ trợ lọc công thức Phổ biến nhất (Trending) [x] (ĐÃ HOÀN THÀNH)
+- Backend [`RecipeController.java`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-backend/src/main/java/com/smartrecipe/smartrecipe_backend/controller/RecipeController.java) & [`RecipeServiceImpl.java`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-backend/src/main/java/com/smartrecipe/smartrecipe_backend/service/impl/RecipeServiceImpl.java): Nhận tham số `sortBy` (`createdAt` | `likeCount`). Đã kiểm thử API hoạt động chuẩn xác.
+- Frontend [`HomePage.jsx`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-frontend/src/pages/HomePage.jsx): Nâng cấp toàn diện theo phong cách **Bento Editorial Discovery** gồm Bento Spotlight, 6 thẻ ảnh chủ đề ẩm thực, Tab chuyển đổi "🔥 Phổ biến nhất" & "🕐 Mới nhất", huy hiệu thứ hạng 🏆 #1, và khối bài viết chuyên sâu từ Bếp trưởng.
 
 #### Task 5.2: Hoàn thiện dữ liệu Admin Panel (Loại bỏ khung rỗng)
 - **Admin Ingredients:** Bổ sung chọn Kệ hàng (`aisleId`) cho cả Backend `AdminController` và Frontend `ReviewModal`.
