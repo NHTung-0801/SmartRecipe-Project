@@ -172,7 +172,7 @@ Hệ thống sẽ hoạt động linh hoạt theo **2 trạng thái người dù
 
 ### 🛡️ GIAI ĐOẠN 4: VÁ LỖ HỔNG SECURITY & BÌNH LUẬN CỘNG ĐỒNG
 
-#### Task 4.1: Mở quyền truy cập công khai trong `SecurityConfig.java`
+#### Task 4.1: Mở quyền truy cập công khai trong `SecurityConfig.java` [x] (ĐÃ HOÀN THÀNH)
 - **File Backend:** [`SecurityConfig.java`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-backend/src/main/java/com/smartrecipe/smartrecipe_backend/security/SecurityConfig.java)
 - **Hành động:** Cấp phép công khai không cần JWT:
   ```java
@@ -181,16 +181,27 @@ Hệ thống sẽ hoạt động linh hoạt theo **2 trạng thái người dù
   ```
   *(Đảm bảo khách vào xem công thức hoặc hồ sơ người nấu không bị dính lỗi `401 Unauthorized`).*
 
-#### Task 4.2: Sửa lỗi nhận diện chủ sở hữu bình luận trong `CommentItem.jsx`
+#### Task 4.2: Sửa lỗi nhận diện chủ sở hữu bình luận trong `CommentItem.jsx` [x] (ĐÃ HOÀN THÀNH)
 - **File Frontend:** [`CommentItem.jsx`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-frontend/src/components/comment/CommentItem.jsx)
 - **Hành động:** Sử dụng `currentUser = useAuthStore(s => s.user)` để so sánh `currentUser.id === comment.author?.id`.
   *(Khắc phục triệt để lỗi `Number(payload.sub) = NaN` khiến tác giả không thấy nút Sửa/Xóa bình luận).*
 
-#### Task 4.3: Nhúng `CommentSection` vào `RecipeDetailPage.jsx`
+#### Task 4.3: Nhúng `CommentSection` vào `RecipeDetailPage.jsx` [x] (ĐÃ HOÀN THÀNH)
 - Nhúng component bình luận bên dưới khối "Món ngon tương tự". Khách vãng lai xem được bình luận; người đã đăng nhập có thể gửi bình luận, trả lời, sửa, xóa.
+- Nâng cấp UX: Thay `window.confirm` bằng modal đồng bộ [`ConfirmModal.jsx`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-frontend/src/components/ui/ConfirmModal.jsx) và chuyển cụm nút Lưu/Hủy sang tông màu ấm Warm Palette.
 
-#### Task 4.4: Dựng Author Card & Nút Follow trên `RecipeDetailPage.jsx`
+#### Task 4.4: Dựng Author Card & Nút Follow trên `RecipeDetailPage.jsx` [x] (ĐÃ HOÀN THÀNH)
 - Bổ sung khối thông tin Tác giả (Avatar, Tên hiển thị, Username, ngày đăng) và nhúng `FollowButton.jsx` bên cạnh tên tác giả.
+
+#### Task 4.5: Hệ thống Thông báo In-App (In-App Notifications) [x] (ĐÃ HOÀN THÀNH)
+- **Backend:** 
+  - Entity [`Notification.java`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-backend/src/main/java/com/smartrecipe/smartrecipe_backend/entity/Notification.java) (recipient, actor, recipe, comment, type, title, message, isRead, createdAt).
+  - Tự động phát thông báo khi có người bình luận công thức hoặc phản hồi bình luận của tác giả.
+  - Các API: `GET /api/v1/notifications`, `GET /api/v1/notifications/unread-count`, `PATCH /api/v1/notifications/{id}/read`, `PATCH /api/v1/notifications/read-all`.
+- **Frontend:**
+  - Chuông thông báo trên [`TopHeader.jsx`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-frontend/src/components/layout/TopHeader.jsx) với chấm đỏ/badge đếm số lượng chưa đọc.
+  - Dropdown Popover [`NotificationDropdown.jsx`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-frontend/src/components/layout/NotificationDropdown.jsx) phong cách Warm Cooking, cho phép đọc từng mục hoặc đánh dấu đã đọc tất cả.
+  - Quản lý trạng thái bằng [`useNotificationStore.js`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-frontend/src/store/useNotificationStore.js) với cơ chế polling tự động 30 giây khi người dùng đang đăng nhập.
 
 ---
 
@@ -198,12 +209,13 @@ Hệ thống sẽ hoạt động linh hoạt theo **2 trạng thái người dù
 
 #### Task 5.1: Backend & Frontend hỗ trợ lọc công thức Phổ biến nhất (Trending) [x] (ĐÃ HOÀN THÀNH)
 - Backend [`RecipeController.java`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-backend/src/main/java/com/smartrecipe/smartrecipe_backend/controller/RecipeController.java) & [`RecipeServiceImpl.java`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-backend/src/main/java/com/smartrecipe/smartrecipe_backend/service/impl/RecipeServiceImpl.java): Nhận tham số `sortBy` (`createdAt` | `likeCount`). Đã kiểm thử API hoạt động chuẩn xác.
-- Frontend [`HomePage.jsx`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-frontend/src/pages/HomePage.jsx): Nâng cấp toàn diện theo phong cách **Bento Editorial Discovery** gồm Bento Spotlight, 6 thẻ ảnh chủ đề ẩm thực, Tab chuyển đổi "🔥 Phổ biến nhất" & "🕐 Mới nhất", huy hiệu thứ hạng 🏆 #1, và khối bài viết chuyên sâu từ Bếp trưởng.
+- Frontend [`HomePage.jsx`](file:///d:/TTTN/SmartRecipe-Project/smartrecipe-frontend/src/pages/HomePage.jsx): Nâng cấp toàn diện theo phong cách **Bento Editorial Discovery** gồm Bento Spotlight (auto-rotate 5s, hover tạm dừng), 6 thẻ ảnh chủ đề ẩm thực, Tab chuyển đổi "🔥 Phổ biến nhất" & "🕐 Mới nhất", huy hiệu thứ hạng 🏆 #1, và khối bài viết chuyên sâu từ Bếp trưởng.
 
-#### Task 5.2: Hoàn thiện dữ liệu Admin Panel (Loại bỏ khung rỗng)
-- **Admin Ingredients:** Bổ sung chọn Kệ hàng (`aisleId`) cho cả Backend `AdminController` và Frontend `ReviewModal`.
-- **Admin Dashboard:** Bổ sung hàng KPI 2 (AI Calls, Nhật ký nấu, Cảnh báo tủ lạnh).
-- **Admin Users:** Xây dựng component `AdminUsers.jsx` và API `GET /api/v1/admin/users` để thay thế màn hình `AdminPlaceholder`.
+#### Task 5.2: Hoàn thiện dữ liệu Admin Panel (Tồn đọng - Đang thực hiện)
+- [x] **Admin Ingredients & Recipes:** Đã có giao diện duyệt công thức (`AdminRecipes.jsx`), quản lý dinh dưỡng nguyên liệu (`AdminIngredients.jsx`).
+- [ ] **Admin Users:** Xây dựng component `AdminUsers.jsx` và API `GET /api/v1/admin/users`, khóa/mở tài khoản để thay thế màn hình `AdminPlaceholder`.
+- [ ] **Admin Ingredients:** Bổ sung chọn Kệ hàng (`aisleId`) cho cả Backend `AdminController` và Frontend `ReviewModal`.
+- [ ] **Admin Dashboard:** Bổ sung hàng KPI 2 (AI Calls, Nhật ký nấu, Cảnh báo tủ lạnh).
 
 ---
 

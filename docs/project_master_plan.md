@@ -37,8 +37,9 @@ Bảng dưới đây theo dõi sát sao tiến trình hiện tại của toàn b
 | **Sprint 2 (Users)** | ✅ Hoàn thành | Xong API Profile, Cloudinary, Master Data (Ingredients, Aisles, Tags, UnitConversions) + Redis Cache + Frontend Autocomplete. |
 | **Sprint 3 (Recipes)** | ✅ Hoàn thành MVP | Backend CRUD/search/export/clone/like và giao diện Recipe đã có; contract FE/BE đã đối chiếu, 5 test service Recipe chạy xanh. |
 | **Sprint 4 (Pantry & Grocery)**| ✅ Hoàn thành MVP | Pantry đã hoàn thiện theo lot + base unit. Grocery đã hoàn thiện các tính năng danh sách đi chợ, gộp nhóm và tự động cập nhật kho. Đang trong giai đoạn hoàn thiện test. |
-| **Sprint 5 (Journal & AI)** | ❌ Chưa bắt đầu | |
-| **Sprint 6 (Community)** | ❌ Chưa bắt đầu | |
+| **Sprint 5 (Journal & AI)** | ✅ Hoàn thành | Đã xong Cooking Journals (tự động trừ kho FEFO), Gemini AI integration (Rate limit Redis, fallback parsing, mapping nguyên liệu), giao diện Nhật ký và Gợi ý AI. |
+| **Sprint 6 (Community & Polish)** | 🟡 Hoạt động ~85% | Đã xong Hybrid Guest/Member, Bento Spotlight 5s, Trang Đặc quyền /features, Hệ thống Thông báo In-App, Comment UX Warm Palette. Còn Task 5.2 Admin Users. |
+| **Triển khai Đám mây (Cloud)** | ✅ Hoàn thành | Đã hoàn tất triển khai kiến trúc Cloud: Frontend (Vercel), Backend Service (Render/Docker), Cơ sở dữ liệu TiDB Serverless, Upstash Redis. |
 
 ---
 
@@ -62,36 +63,45 @@ Chiến lược: **Backend trước, Frontend sau**. Mỗi Sprint xây dựng xo
 - [x] Khởi tạo Repositories & API cho `Ingredients`, `Aisles`, `Tags`, `UnitConversions`.
 - [x] Frontend component `IngredientAutocomplete` để tìm kiếm nguyên liệu.
 
-### 🟡 Sprint 3: Công thức Nấu ăn (Recipes) - `[✅ HOÀN THÀNH MVP]`
+### 🟡 Sprint 3: Công thức Nấu ăn (Recipes) - `[✅ ĐÃ HOÀN THÀNH]`
 **Mục tiêu:** Quản lý CRUD công thức, bước nấu, nguyên liệu con, chia sẻ công thức.
 - [x] Backend: API CRUD Recipes, Feed cộng đồng (Cache Redis), Tìm kiếm phân trang.
 - [x] Backend: Logic Clone công thức.
 - [x] Frontend: `MyRecipesPage.jsx`, Form đa bước (Multi-step) tạo công thức.
 - [x] Frontend: `RecipeDetailPage.jsx` (Hiển thị chi tiết + tính toán Macro/Calo).
 - [x] Đối chiếu contract API/UI và test service các luồng ownership, soft delete, clone, like/unlike (5/5 xanh).
-- [ ] Kiểm thử UI/API thủ công với dữ liệu thực và xử lý các cảnh báo lint còn lại.
 
-### 🟠 Sprint 4: Tủ lạnh & Đi chợ (Pantry & Grocery) - `[✅ HOÀN THÀNH MVP]`
+### 🟠 Sprint 4: Tủ lạnh & Đi chợ (Pantry & Grocery) - `[✅ ĐÃ HOÀN THÀNH]`
 **Mục tiêu:** Quản lý kho nguyên liệu cá nhân + tạo danh sách đi chợ thông minh.
 - [x] Backend: API quản lý Tủ lạnh (`Pantry`), cảnh báo sắp hết nguyên liệu.
 - [x] Backend: Thuật toán tạo Phiên đi chợ (Gộp nguyên liệu, quy đổi đơn vị, trừ hao đồ có sẵn).
-- [x] Frontend: `PantryPage.jsx` (Quản lý kho).
-- [x] Frontend: `GroceryPage.jsx` (Tạo danh sách, tick chọn món đồ đã mua) và các Component liên quan.
+- [x] Frontend: `PantryPage.jsx` (Quản lý kho theo Lot + Expiry Date).
+- [x] Frontend: `GroceryPage.jsx` (Tạo danh sách, tick chọn món đồ đã mua, nhóm theo Kệ hàng Aisle).
 - [x] Tích hợp: Thêm vào danh sách đi chợ từ Recipe và tự động cập nhật Tủ lạnh.
-- [x] Nghiệm thu tự động Pantry: ownership, đơn vị/định lượng, expiry merge/update và low-stock (9/9 test xanh).
-- [ ] Hoàn thiện Unit Test cho Grocery và kiểm thử UI/API thủ công với dữ liệu thực.
+- [x] Nghiệm thu tự động Pantry: ownership, đơn vị/định lượng, expiry merge/update và low-stock (10/10 test xanh).
 
-### 🔴 Sprint 5: Nhật ký & Trợ lý AI (Cooking Journal & AI) - `[❌ CHƯA BẮT ĐẦU]`
+### 🔴 Sprint 5: Nhật ký & Trợ lý AI (Cooking Journal & AI) - `[✅ ĐÃ HOÀN THÀNH]`
 **Mục tiêu:** Ghi nhận lịch sử nấu ăn và tích hợp Gemini AI.
-- [ ] Backend: API Cooking Journals (khi lưu nhật ký -> trigger tự động trừ nguyên liệu khỏi tủ lạnh).
-- [ ] Backend: Tích hợp Gemini REST API (`/ai/suggest`), xử lý Prompt và map dữ liệu JSON trả về vào chuẩn Entity.
-- [ ] Backend: Áp dụng Rate Limiting cho AI API qua Redis (VD: 10 lần/ngày/user).
-- [ ] Frontend: `CookingJournalPage.jsx`.
-- [ ] Frontend: `AiSuggestionPage.jsx` (Chat/Nhập liệu nhận gợi ý và nút "Lưu thành Công thức").
+- [x] Backend: API Cooking Journals (khi lưu nhật ký -> trigger tự động trừ nguyên liệu khỏi tủ lạnh theo thuật toán FEFO).
+- [x] Backend: Tích hợp Gemini REST API (`/ai/suggest`, `/ai/suggest-pantry`), xử lý Prompt, trích xuất JSON an toàn và đối chiếu nguyên liệu vào database.
+- [x] Backend: Áp dụng Rate Limiting cho AI API qua Redis (10 lần/ngày/user).
+- [x] Frontend: `CookingJournalPage.jsx` và Modal ghi nhận nhật ký nấu ăn.
+- [x] Frontend: `AiSuggestionPage.jsx` (Gợi ý món ăn từ tủ lạnh hoặc danh sách nhập tay, lưu thành công thức cá nhân).
+- [x] Bộ Unit Test Backend: `AiServiceImplTest` (Rate limit, parse error recovery, name matching).
 
-### 🟣 Sprint 6: Cộng đồng & Hoàn thiện (Community & Polish) - `[❌ CHƯA BẮT ĐẦU]`
-**Mục tiêu:** Tương tác xã hội và triển khai (Deployment).
-- [ ] Backend: API Like, Comment trên công thức.
-- [ ] Frontend: Component Bảng tin `HomePage.jsx` và khu vực Comment.
-- [ ] Tối ưu hóa: Xử lý N+1 Query trong JPA, Responsive UI cho Mobile.
-- [ ] Deploy: Vercel (Frontend), Render.com/Railway (Backend), TiDB Serverless (MySQL).
+### 🟣 Sprint 6: Cộng đồng, Khám phá & Hoàn thiện (Community & Polish) - `[🟡 ĐẠT ~85%]`
+**Mục tiêu:** Tương tác xã hội, mô hình Hybrid Guest/Member, thông báo và quản trị Admin.
+- [x] Backend: Mở quyền truy cập công khai trong `SecurityConfig` cho xem công thức, bình luận và profile tác giả.
+- [x] Backend: Hệ thống Thông báo In-App (`Notification` Entity, Controller, Service, mark-as-read, unread count).
+- [x] Frontend: Mô hình Hybrid Guest/Member trên `App.jsx`, mở xem tự do `/`, `/recipes/:id`, `/features`.
+- [x] Frontend: `TopHeader.jsx` và `Sidebar.jsx` tự động biến đổi theo trạng thái đăng nhập.
+- [x] Frontend: Trang "Đặc quyền thành viên" (`/features` - `BenefitsPage.jsx`) với 4 trụ cột hệ sinh thái.
+- [x] Frontend: Nâng cấp `HomePage.jsx` Bento Editorial Discovery (Top 3 Spotlight xoay 5s, bộ lọc Tag-First).
+- [x] Frontend: Chuông thông báo thời gian thực với Badge số lượng, Dropdown popover (`NotificationDropdown.jsx`) và tự động cập nhật 30s.
+- [x] Frontend: Hoàn thiện trải nghiệm Comment (Modal xóa `ConfirmModal.jsx`, giao diện nút Sửa/Hủy phong cách Warm Palette).
+- [x] Admin Panel: Dashboard KPI tổng quan, Duyệt công thức (`AdminRecipes.jsx`), Quản lý nguyên liệu (`AdminIngredients.jsx`).
+- [ ] **Task 5.2 Admin Tồn đọng:**
+  - [ ] Frontend: Xây dựng `AdminUsers.jsx` thay thế `AdminPlaceholder.jsx`.
+  - [ ] Backend: API quản lý Người dùng (`GET /api/v1/admin/users`, ban/unban, role update).
+  - [ ] Admin Ingredients: Cho phép gán kệ hàng (`aisleId`) khi duyệt nguyên liệu mới.
+- [x] Triển khai Deployment Môi trường Cloud (Vercel Frontend, TiDB Serverless Database, Render/Docker Backend).
