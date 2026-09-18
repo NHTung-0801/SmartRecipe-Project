@@ -4,7 +4,7 @@
 > **Đề tài:** Nền tảng Quản lý và Chia sẻ Công thức Nấu ăn Thông minh tích hợp Trợ lý AI (Smart Recipe & Grocery Platform)  
 > **Cập nhật:** Tháng 09/2026  
 > **Phiên bản hệ thống:** v1.3-production-ready  
-> **Trạng thái kiểm thử:** 100% BUILD SUCCESS (Backend: 39/39 Unit Tests xanh; Frontend: 17/17 Vitest xanh; Production Build: 1.98s)  
+> **Trạng thái kiểm thử:** 100% BUILD SUCCESS (Backend: 47/47 Unit Tests xanh; Frontend: 17/17 Vitest xanh; Production Build: 2.17s)  
 > **Kiến trúc triển khai:** Umbrella Monorepo (Git Submodules) — Cloud Hybrid (Vercel + Render + TiDB Serverless + Upstash Redis)
 
 ---
@@ -24,7 +24,9 @@
 5. [MA TRẬN ROUTING, GIAO DIỆN & KẾT NỐI API](#5-ma-trận-routing-giao-diện--kết-nối-api)
 6. [HẠ TẦNG ĐÁM MÂY & CI/CD PIPELINE (DEVOPS)](#6-hạ-tầng-đám-mây--cicd-pipeline-devops)
 7. [CHỈ SỐ SỨC KHỎE MÃ NGUỒN & KIỂM THỬ (CODE HEALTH & QUALITY GATES)](#7-chỉ-số-sức-khỏe-mã-nguồn--kiểm-thử-code-health--quality-gates)
-8. [LỘ TRÌNH PHÁT TRIỂN TIẾP THEO (FUTURE ROADMAP)](#8-lộ-trình-phát-triển-tiếp-theo-future-roadmap)
+8. [HỆ THỐNG KHÔI PHỤC MẬT KHẨU QUA EMAIL OTP & REDIS](#8-hệ-thống-khôi-phục-mật-khẩu-qua-email-otp--redis)
+9. [TỔNG KẾT & BÀN GIAO BÁO CÁO TỐT NGHIỆP](#9-tổng-kết--bàn-giao-báo-cáo-tốt-nghiệp)
+
 
 ---
 
@@ -298,16 +300,131 @@ Hệ thống chuẩn hóa 18 Entity đảm bảo tính toàn vẹn tham chiếu:
 
 ---
 
-## 8. LỘ TRÌNH PHÁT TRIỂN TIẾP THEO (FUTURE ROADMAP)
+## 8. HỆ THỐNG KHÔI PHỤC MẬT KHẨU QUA EMAIL OTP & REDIS (PASSWORD RECOVERY ARCHITECTURE)
 
-### 8.1 Tính năng Quên mật khẩu qua Email OTP [ĐÃ TRIỂN KHAI HOÀN TẤT 100%]
-*(Chi tiết đặc tả kỹ thuật xem tại [`docs/forgot_password_email_otp_plan.md`](./forgot_password_email_otp_plan.md))*
-* **Dịch vụ Email:** Tích hợp `spring-boot-starter-mail` qua Gmail SMTP Server (`smtp.gmail.com:587`, TLS). Có cơ chế Fallback in mã OTP ra server console phục vụ môi trường test local khi chưa điền App Password Gmail.
-* **Kiến trúc Redis Cache Siêu gọn:** Sử dụng **Redis In-Memory Cache (TTL: 10 phút)** để lưu trữ mã OTP tạm thời; **không thêm Entity/Bảng mới**, giữ nguyên 18 bảng CSDL sạch sẽ 100%.
-* **Bảo mật Đa lớp:** Cooldown 60 giây chống spam nút gửi mã (`otp:cooldown:{email}`), đếm số lần sai và tự động khóa mã nếu nhập sai quá 5 lần (`otp:attempts:{email}`). Xóa sạch các key Redis ngay sau khi đổi mật khẩu thành công (Single-use).
-* **Trải nghiệm Frontend Hoàn chỉnh:** Modal 2 bước `ForgotPasswordModal.jsx` phong cách Warm Terracotta `#a13923` tại `/login` kèm đồng hồ đếm ngược 60 giây và tự động điền email sau khi khôi phục thành công.
+### 8.1 Bối cảnh & Nguyên tắc Thiết kế (Zero Schema Expansion)
+* **Dữ liệu tạm thời (Ephemeral Data):** Mã xác thực OTP chỉ có vòng đời tồn tại đúng **10 phút**. Nếu lưu vào MySQL/TiDB, bảng `password_reset_otp` sẽ nhanh chóng tích tụ hàng ngàn bản ghi rác hết hạn, đòi hỏi phải viết thêm Scheduler quét dọn định kỳ.
+* **Bảo toàn Kiến trúc 18 Entity chuẩn mực:** Báo cáo Tốt nghiệp và sơ đồ CSDL của dự án đã chuẩn hóa 18 bảng. Việc **không tạo thêm Entity/Bảng mới** giúp dự án không bị phình to, dữ liệu luôn sạch sẽ 100%.
+* **Tận dụng Redis sẵn có:** Dự án đã có sẵn **Redis 7 (và Upstash Redis Cloud)**. Redis sinh ra là để xử lý dữ liệu có thời hạn (TTL), tự động hủy sau khi hết giờ mà không tốn một byte lưu trữ vĩnh viễn nào.
+* **Bảo mật đa lớp:**
+  - Mã gồm 6 chữ số ngẫu nhiên (`SecureRandom`), hiệu lực **10 phút**, dùng duy nhất **1 lần** (Single-use).
+  - Chống Brute-force: Khóa OTP sau **5 lần** nhập sai liên tiếp.
+  - Chống Spam (Rate Limit / Cooldown): Mỗi email phải đợi tối thiểu **60 giây** mới được yêu cầu gửi lại mã (kèm đồng hồ đếm ngược trực quan trên giao diện).
 
-### 8.2 Nghiệm thu Báo cáo Tốt nghiệp
-* Đồng bộ con trỏ Submodules trên remote repository gốc.
-* Hoàn thiện cuốn Báo cáo Thực tập Tốt nghiệp (khớp nối các sơ đồ tuần tự, bảng cơ sở dữ liệu và kết quả kiểm thử từ tài liệu này vào file báo cáo `.docx`).
+### 8.2 Sơ đồ Luồng Tuần tự (Sequence Workflow)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Người dùng
+    participant FE as Frontend (Modal tại /login)
+    participant AuthCtrl as AuthController
+    participant AuthSvc as AuthService
+    participant MailSvc as EmailService
+    participant Redis as In-Memory Cache (Redis)
+    participant DB as Database (User Table)
+    participant Gmail as Gmail SMTP Server
+
+    %% ── Giai đoạn 1: Yêu cầu mã OTP ──
+    User->>FE: Bấm "Quên mật khẩu?" tại /login
+    FE->>User: Mở Popup: Bước 1 (Nhập Email)
+    User->>FE: Nhập email & Bấm "Gửi mã xác thực"
+    FE->>AuthCtrl: POST /api/v1/auth/forgot-password { email }
+    AuthCtrl->>AuthSvc: forgotPassword(request)
+    
+    AuthSvc->>Redis: Kiểm tra key cooldown "otp:cooldown:{email}"
+    alt Đang trong thời gian chờ 60s
+        AuthSvc-->>FE: HTTP 400: "Vui lòng đợi 60 giây trước khi yêu cầu mã mới"
+    else Hết thời gian chờ
+        AuthSvc->>DB: Kiểm tra Email có tồn tại trong bảng users?
+        alt Email không tồn tại
+            AuthSvc-->>FE: HTTP 404: "Không tìm thấy tài khoản liên kết với email này"
+        else Email hợp lệ
+            AuthSvc->>AuthSvc: Sinh OTP 6 số ngẫu nhiên (VD: 582914)
+            AuthSvc->>Redis: SET "otp:reset:{email}" = 582914 (TTL: 10 phút)
+            AuthSvc->>Redis: SET "otp:cooldown:{email}" = "1" (TTL: 60 giây)
+            AuthSvc->>MailSvc: sendOtpEmail(email, otpCode)
+            MailSvc->>Gmail: Gửi thư HTML qua cổng 587 TLS (hoặc log Console)
+            AuthSvc-->>FE: HTTP 200: { message: "Mã xác thực OTP đã được gửi đến email" }
+            FE->>User: Chuyển sang Bước 2: Nhập OTP & Mật khẩu mới (Bật đếm ngược 60s)
+        end
+    end
+
+    %% ── Giai đoạn 2: Đặt lại mật khẩu ──
+    User->>FE: Nhập 6 số OTP + Mật khẩu mới + Xác nhận mật khẩu
+    FE->>AuthCtrl: POST /api/v1/auth/reset-password { email, otp, newPassword, confirmPassword }
+    AuthCtrl->>AuthSvc: resetPassword(request)
+
+    AuthSvc->>Redis: GET "otp:reset:{email}"
+    alt OTP không tồn tại hoặc đã hết hạn (sau 10 phút)
+        AuthSvc-->>FE: HTTP 400: "Mã OTP không tồn tại hoặc đã hết hạn"
+    else OTP không khớp
+        AuthSvc->>Redis: Tăng số lần thử sai "otp:attempts:{email}"
+        AuthSvc-->>FE: HTTP 400: "Mã OTP không chính xác. Bạn còn X lần thử"
+    else OTP khớp chính xác
+        AuthSvc->>AuthSvc: Mã hóa mật khẩu mới bằng BCrypt
+        AuthSvc->>DB: Cập nhật password mới cho User trong bảng users
+        AuthSvc->>Redis: DEL "otp:reset:{email}", "otp:cooldown:{email}", "otp:attempts:{email}" (Single-use)
+        AuthSvc-->>FE: HTTP 200: { message: "Đặt lại mật khẩu thành công!" }
+        FE->>User: Toast xanh thành công, đóng modal, điền sẵn email vào form Login
+    end
+```
+
+### 8.3 Thiết kế Bộ nhớ Tạm thời trong Redis
+
+| Redis Key Pattern | Kiểu dữ liệu | Giá trị lưu trữ | TTL (Thời gian sống) | Mục đích kỹ thuật |
+|---|:---:|:---:|:---:|---|
+| `otp:reset:{email}` | String | Mã OTP 6 chữ số (VD: `"719302"`) | **10 phút** (`600s`) | Lưu mã xác thực tạm thời. Hết 10 phút Redis tự xóa sạch. |
+| `otp:cooldown:{email}` | String | `"1"` | **60 giây** (`60s`) | Chặn người dùng spam nút gửi mã liên tục. |
+| `otp:attempts:{email}` | Integer | Số lần nhập sai (1 $\rightarrow$ 5) | **10 phút** (`600s`) | Chống Brute-force: nhập sai quá 5 lần sẽ vô hiệu hóa mã OTP. |
+
+### 8.4 Thành phần Backend Đã Triển khai
+* **Thư viện (`pom.xml`):** Bổ sung `spring-boot-starter-mail`.
+* **Cấu hình (`application.yaml`):** Gmail SMTP Server (`smtp.gmail.com:587`, TLS `starttls.enable=true`, tài khoản `kiritohackiem05@gmail.com`).
+* **DTOs:** `ForgotPasswordRequest` (@Email, @NotBlank) & `ResetPasswordRequest` (email, otp 6 số, newPassword >= 6 ký tự, confirmPassword).
+* **Dịch vụ Email (`EmailService` & `EmailServiceImpl`):**
+  - Mẫu thư HTML Warm Terracotta `#a13923` cao cấp, hộp OTP 32px to rõ.
+  - Cơ chế **Dev Fallback Mock**: Khi chưa cấu hình Gmail App Password, tự động in mã OTP ra console máy chủ để test local trơn tru mà không làm gián đoạn hệ thống.
+* **Tầng Controller & Service:**
+  - `AuthService.java` & `AuthServiceImpl.java`: Logic sinh OTP, lưu Redis, kiểm tra cooldown, giới hạn 5 lần thử và băm mật khẩu BCrypt.
+  - `AuthController.java`: Mở 2 endpoints công khai `POST /api/v1/auth/forgot-password` và `POST /api/v1/auth/reset-password` (được cấu hình `permitAll()` tự động qua `/api/v1/auth/**`).
+* **Bộ Kiểm thử Tự động:** `AuthServiceImplOtpTest.java` (8/8 Unit tests passed).
+
+### 8.5 Thành phần Frontend Đã Triển khai
+* **Component Modal:** `smartrecipe-frontend/src/components/auth/ForgotPasswordModal.jsx` & CSS Module.
+* **Giao diện 2 bước thông minh:**
+  - *Bước 1:* Nhập email $\rightarrow$ Gửi mã xác thực kèm loading spinner và validation email regex.
+  - *Bước 2:* Nhập 6 chữ số OTP $\rightarrow$ Mật khẩu mới & Xác nhận $\rightarrow$ Nút xem/ẩn mật khẩu $\rightarrow$ Đồng hồ 60s cooldown đếm ngược gửi lại mã.
+* **Tích hợp tại Trang Đăng nhập (`LoginPage.jsx`):** Gắn nút mở modal tại dòng chữ *"Quên mật khẩu?"*, tự động điền sẵn email vào ô đăng nhập sau khi hoàn thành.
+* **Dịch vụ API (`authService.js`):** Bổ sung 2 phương thức `forgotPassword(email)` và `resetPassword(payload)`.
+
+### 8.6 Kịch bản Kiểm thử Nghiệm thu Đạt chuẩn
+- [x] **Backend Test 1:** Email không tồn tại $\rightarrow$ Báo lỗi `ResourceNotFoundException`.
+- [x] **Backend Test 2:** Gửi lại khi chưa hết 60s cooldown $\rightarrow$ Báo lỗi `BadRequestException`.
+- [x] **Backend Test 3:** Gửi mã hợp lệ $\rightarrow$ Lưu Redis TTL 10 phút, đặt cooldown 60s, gửi thư HTML qua SMTP.
+- [x] **Backend Test 4:** OTP hết hạn $\rightarrow$ Báo lỗi OTP không tồn tại hoặc hết hạn.
+- [x] **Backend Test 5:** OTP sai $\rightarrow$ Tăng số lần thử sai, thông báo số lần thử còn lại.
+- [x] **Backend Test 6:** Nhập sai quá 5 lần $\rightarrow$ Khóa và xóa ngay OTP trong Redis.
+- [x] **Backend Test 7:** OTP đúng $\rightarrow$ Băm BCrypt, cập nhật database, xóa sạch key Redis (Single-use).
+- [x] **Backend Test 8:** Mật khẩu xác nhận không khớp $\rightarrow$ Báo lỗi validation.
+- [x] **Frontend Manual Test:** Nhận email thật, đếm ngược 60s, đặt lại mật khẩu và đăng nhập thành công 100%.
+
+---
+
+## 9. TỔNG KẾT & BÀN GIAO BÁO CÁO TỐT NGHIỆP
+
+### 9.1 Tổng kết Thành quả Đạt được
+1. **Hoàn thiện 100% 6 Sprints:** Nền tảng Auth, Từ điển USDA 290 nguyên liệu, Động cơ Công thức, Tủ lạnh thông minh FEFO, Trợ lý AI Gemini Rate Limit và Hệ thống Quản trị Admin Panel 6 màn hình.
+2. **Tính năng Quên mật khẩu tối ưu:** 0 Entity mới, 0 Bảng mới, khai thác tối đa sức mạnh của Redis In-Memory Cache và Gmail SMTP.
+3. **Chỉ số Chất lượng Phần mềm (Quality Metrics):**
+   - Backend: **47/47 Unit tests Passed** (JUnit 5 + Mockito).
+   - Frontend: **17/17 Vitest tests Passed** (React Testing Library).
+   - Build Production: **2.17 giây**, 0 lỗi.
+   - Linter: **0 errors**.
+
+### 9.2 Hướng dẫn Cập nhật Báo cáo Thực tập Tốt nghiệp (.docx)
+* **Khớp nối số lượng kiểm thử:** Cập nhật mục "Kiểm thử hệ thống" trong báo cáo: Backend có **47 Unit Tests** và Frontend có **17 Unit Tests**.
+* **Bổ sung Sơ đồ Tuần tự Quên mật khẩu:** Sử dụng sơ đồ Sequence Diagram tại **Mục 8.2** ở trên để minh họa cho quy trình xác thực và khôi phục mật khẩu trong đồ án.
+* **Cơ sở dữ liệu:** Khẳng định hệ thống đạt chuẩn **18 Entities** và sử dụng **Redis Cache** cho các dữ liệu tạm thời (Rate limiting và OTP).
+
 
