@@ -224,6 +224,23 @@ CREATE TABLE IF NOT EXISTS `follows` (
     FOREIGN KEY (`following_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
+-- notifications: entity Notification.java cho thông báo tương tác
+CREATE TABLE IF NOT EXISTS `notifications` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
+    `recipient_id` BIGINT NOT NULL,
+    `actor_id` BIGINT NOT NULL,
+    `recipe_id` BIGINT NULL,
+    `comment_id` BIGINT NULL,
+    `type` VARCHAR(30) NOT NULL,
+    `message` VARCHAR(500) NOT NULL,
+    `is_read` BOOLEAN NOT NULL DEFAULT FALSE,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`recipient_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`actor_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`recipe_id`) REFERENCES `recipes`(`id`) ON DELETE SET NULL,
+    FOREIGN KEY (`comment_id`) REFERENCES `recipe_comments`(`id`) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
 -- ==========================================
 -- Chỉ mục (Indexes) cho hiệu suất truy vấn
 -- ==========================================
@@ -232,6 +249,7 @@ CREATE TABLE IF NOT EXISTS `follows` (
 CREATE INDEX `idx_recipes_author_id` ON `recipes`(`author_id`);
 CREATE INDEX `idx_recipes_status` ON `recipes`(`status`);
 CREATE INDEX `idx_recipes_created_at` ON `recipes`(`created_at`);
+CREATE INDEX `idx_notifications_recipient_id` ON `notifications`(`recipient_id`);
 
 -- Recipe Steps: Truy vấn theo công thức và sắp xếp theo thứ tự bước
 CREATE INDEX `idx_recipe_steps_recipe_id` ON `recipe_steps`(`recipe_id`);
