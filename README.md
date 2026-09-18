@@ -690,11 +690,9 @@ Dự án áp dụng mô hình tự động hóa kiểm thử và phát hành li�
 ## 🤝 Tác giả & Bản quyền
 
 - **Sinh viên thực hiện:** Nguyễn Hoàng Tùng
-- **Mã sinh viên:** 2121050720
-- **Lớp:** Tin học Mỏ K66
+- **Mã sinh viên:** 064205002222
 - **Khoa:** Công nghệ Thông tin
-- **Trường:** Đại học Mỏ - Địa chất (HUMG)
-- **Giảng viên hướng dẫn:** TS. Trịnh Thị Huệ
+- **Trường:** Đại học giao thông vận tải TP.HCM
 
 ---
 
