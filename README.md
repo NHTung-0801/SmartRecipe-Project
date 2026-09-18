@@ -1,7 +1,7 @@
 # 🍳 SmartRecipe & Grocery Platform
 
 > **Nền tảng Quản lý Thực đơn, Tủ nguyên liệu Thông minh & Đi chợ Tối ưu**  
-> *Đồ án Thực tập Tốt nghiệp (TTTN) — Khoa Công nghệ Thông tin, Trường Đại học Mỏ - Địa chất (HUMG)*  
+> *Đồ án Thực tập Tốt nghiệp (TTTN) — Trường Đại học Giao thông Vận tải TP. Hồ Chí Minh (UTH)*  
 > Tích hợp sâu **Google Gemini AI**, quy đổi đơn vị theo đồ thị BFS, cơ chế trừ kho theo hạn dùng (FEFO) và Trung tâm Quản trị (Admin Portal) toàn diện.
 
 ---
@@ -38,7 +38,7 @@ SmartRecipe-Project (Root Umbrella)
 <tr>
 <td width="50%" valign="top">
 
-### ⚙️ [smartrecipe-backend/](./smartrecipe-backend/README.md)
+### ⚙️ [smartrecipe-backend/](https://github.com/NHTung-0801/smartrecipe-backend)
 **Spring Boot 4.1.0 & Java 21 LTS**
 - **15 REST Controllers & 19 JPA Repositories**
 - **Google Gemini AI Engine:** Gợi ý thực đơn Zero-Waste & Custom Prompt
@@ -49,12 +49,12 @@ SmartRecipe-Project (Root Umbrella)
 - **Admin Portal API:** Dashboard KPI, kiểm duyệt công thức, phân quyền an toàn
 - **Kiểm thử tự động:** **48 Unit Tests** độc lập (JUnit 5 + Mockito)
 
-👉 **[Đọc tài liệu Backend API chi tiết](./smartrecipe-backend/README.md)**
+👉 **[Đọc tài liệu Backend API chi tiết](https://github.com/NHTung-0801/smartrecipe-backend#readme)**
 
 </td>
 <td width="50%" valign="top">
 
-### 🎨 [smartrecipe-frontend/](./smartrecipe-frontend/README.md)
+### 🎨 [smartrecipe-frontend/](https://github.com/NHTung-0801/smartrecipe-frontend)
 **React 19, Vite 8 & Tailwind CSS v4**
 - **21 Trang Giao diện:** 15 trang người dùng + 6 trang Admin Portal chuyên sâu
 - **Thiết kế Ấm áp Độc bản:** Tone màu gạch nung `#a13923`, card bo góc mềm mại
@@ -64,7 +64,7 @@ SmartRecipe-Project (Root Umbrella)
 - **Cơ chế Token Refresh Tự động:** Axios Interceptor với hàng đợi chống race-condition
 - **Kiểm thử giao diện:** **17 Vitest Tests** (Testing Library + jsdom)
 
-👉 **[Đọc tài liệu Frontend UI/UX chi tiết](./smartrecipe-frontend/README.md)**
+👉 **[Đọc tài liệu Frontend UI/UX chi tiết](https://github.com/NHTung-0801/smartrecipe-frontend#readme)**
 
 </td>
 </tr>
@@ -678,8 +678,8 @@ Dự án áp dụng mô hình tự động hóa kiểm thử và phát hành li�
 |---|---|
 | [🔗 Backend Repo](https://github.com/NHTung-0801/smartrecipe-backend) | Kho mã nguồn Backend (Spring Boot 4, Java 21, REST API) |
 | [🔗 Frontend Repo](https://github.com/NHTung-0801/smartrecipe-frontend) | Kho mã nguồn Frontend (React 19, Vite 8, Tailwind v4, SPA) |
-| [📖 Backend README](./smartrecipe-backend/README.md) | Kiến trúc, 15 API controllers, luồng Auth, luồng AI, Redis cache, trừ kho FEFO |
-| [📖 Frontend README](./smartrecipe-frontend/README.md) | Kiến trúc, 21 màn hình (6 trang Admin), routing, state management, design system |
+| [📖 Backend README](https://github.com/NHTung-0801/smartrecipe-backend#readme) | Kiến trúc, 15 API controllers, luồng Auth, luồng AI, Redis cache, trừ kho FEFO |
+| [📖 Frontend README](https://github.com/NHTung-0801/smartrecipe-frontend#readme) | Kiến trúc, 21 màn hình (6 trang Admin), routing, state management, design system |
 | [docs/project_master_plan.md](./docs/project_master_plan.md) | Kế hoạch phát triển tổng thể 6 Sprints và kiến trúc Hybrid Cloud |
 | [sql/init_database.sql](./sql/init_database.sql) | DDL 19 bảng + seed data quầy hàng và thẻ phân loại khởi tạo |
 | [sql/seed_ingredients.sql](./sql/seed_ingredients.sql) | 290 nguyên liệu gốc từ USDA FoodData Central |
@@ -691,9 +691,9 @@ Dự án áp dụng mô hình tự động hóa kiểm thử và phát hành li�
 
 - **Sinh viên thực hiện:** Nguyễn Hoàng Tùng
 - **Mã sinh viên:** 064205002222
-- **Khoa:** Công nghệ Thông tin
-- **Trường:** Đại học giao thông vận tải TP.HCM
+- **Ngành:** Công nghệ Thông tin
+- **Trường:** Trường Đại học Giao thông Vận tải TP. Hồ Chí Minh (UTH)
 
 ---
 
-*SmartRecipe & Grocery Platform — Giải pháp Công nghệ Ẩm thực Thông minh vì Sức khỏe và Môi trường xanh.*
+*SmartRecipe Platform — Giải pháp Công nghệ Ẩm thực Thông minh vì Sức khỏe và Môi trường xanh.*
