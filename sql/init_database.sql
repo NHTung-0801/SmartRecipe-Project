@@ -8,7 +8,7 @@
 -- được xóa vì encoding giờ đúng ngay từ lúc khởi tạo.
 SET NAMES utf8mb4;
 
-CREATE DATABASE IF NOT EXISTS `smart_recipe_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
+CREATE DATABASE IF NOT EXISTS `smart_recipe_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `smart_recipe_db`;
 
 -- 1. Nhóm Dữ liệu nền tảng & Phân quyền
@@ -35,11 +35,8 @@ CREATE TABLE IF NOT EXISTS `ingredients` (
     -- UNIQUE là bắt buộc cho seed_ingredients.sql: câu INSERT ... ON DUPLICATE
     -- KEY UPDATE chỉ nhận ra "đã tồn tại" thông qua một unique index. Không có
     -- nó thì chạy seed lần thứ hai sẽ nhân đôi toàn bộ 289 dòng.
-    -- Cũng chặn luôn lỗi cũ: luồng AI từng tạo 10 dòng 'Thịt Gà' trùng nhau.
-    -- COLLATE utf8mb4_0900_as_ci: phân biệt dấu (as), không phân biệt hoa/thường (ci).
-    -- Cần thiết vì mặc định MySQL 8.0 dùng ai_ci (accent-insensitive), khiến
-    -- 'Dầu dừa' = 'Đậu đũa' và UNIQUE index fail với 2 tên hoàn toàn khác nhau.
-    `name` VARCHAR(100) NOT NULL UNIQUE COLLATE utf8mb4_0900_as_ci,
+    -- Tương thích cả TiDB Cloud lẫn MySQL với utf8mb4_unicode_ci.
+    `name` VARCHAR(100) NOT NULL UNIQUE,
     `base_unit` VARCHAR(20) NOT NULL,
     `calories_per_100g` DECIMAL(10,2) NOT NULL,
     `protein` DECIMAL(10,2) NOT NULL,
@@ -330,30 +327,5 @@ INSERT INTO `unit_conversions` (`from_unit`, `to_unit`, `multiplier`, `ingredien
 --   docker cp sql/seed_ingredients.sql smartrecipe-mysql:/tmp/seed.sql
 --   docker exec smartrecipe-mysql sh -c 'mysql -uroot -proot --default-character-set=utf8mb4 < /tmp/seed.sql'
 
--- ==========================================
--- Chuẩn hóa collation toàn bộ 18 bảng
--- ==========================================
--- MYSQL_DATABASE trong docker-compose tạo DB trước khi script này chạy, với
--- collation mặc định của server (utf8mb4_0900_ai_ci). Các bảng tạo trong DB đó
--- kế thừa ai_ci, khiến JOIN giữa các bảng sẽ ném ERROR 1267 (Illegal mix of
--- collations) nếu sau này cần so sánh hai cột text với nhau.
--- CONVERT TO CHARACTER SET áp dụng cho cả bảng lẫn từng cột text — an toàn
--- vì DB đang rỗng, chi phí bằng 0.
-ALTER TABLE `ai_suggestion_logs`  CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `aisles`              CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `cooking_journals`    CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `follows`             CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `grocery_items`       CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `grocery_list_recipes` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `grocery_lists`       CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `ingredients`         CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `recipe_comments`     CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `recipe_ingredients`  CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `recipe_likes`        CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `recipe_steps`        CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `recipe_tags`         CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `recipes`             CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `tags`                CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `unit_conversions`    CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `user_pantry`         CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
-ALTER TABLE `users`               CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci;
+
+
