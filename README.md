@@ -12,7 +12,7 @@ Hệ thống đã được đóng gói container và triển khai thành công t
 
 | Thành phần | Môi trường Triển khai | Trạng thái | Đường dẫn Trực tiếp |
 |---|---|:---:|---|
-| **Frontend Web App** | **Vercel Edge CDN** | ![Deploy](https://img.shields.io/badge/Vercel-Live-brightgreen?logo=vercel) | [🌐 smartrecipe-frontend.vercel.app](https://smartrecipe-frontend.vercel.app) |
+| **Frontend Web App** | **Vercel Edge CDN** | ![Deploy](https://img.shields.io/badge/Vercel-Live-brightgreen?logo=vercel) | [🌐 smartrecipe-platform.vercel.app](https://smartrecipe-platform.vercel.app) |
 | **Backend REST API** | **Render Web Service (Docker)** | ![Deploy](https://img.shields.io/badge/Render-Active-brightgreen?logo=render) | [⚡ smartrecipe-backend.onrender.com/api/v1](https://smartrecipe-backend.onrender.com/api/v1) |
 | **API Health Check** | **Spring Boot Actuator** | ![Health](https://img.shields.io/badge/Health-UP-brightgreen) | [🩺 /actuator/health](https://smartrecipe-backend.onrender.com/actuator/health) |
 | **Database Cloud** | **TiDB Cloud Serverless** | ![Database](https://img.shields.io/badge/TiDB-Distributed%20MySQL-blue?logo=mysql) | Cluster Serverless (19 bảng · Collation chuẩn) |
@@ -342,7 +342,7 @@ Sprint 6 ████████████████████ 100%  CI/C
 - ✅ **Admin Portal:** Xây dựng trọn vẹn 6 màn hình quản trị chuyên sâu (Dashboard KPI, Duyệt công thức, Duyệt nguyên liệu, Quản lý thành viên, Giám sát AI logs, Thiết lập hệ thống).
 - ✅ **Thiết lập GitHub Actions CI:** Tự động chạy 48 tests Backend và 17 tests Frontend trên mỗi commit.
 - ✅ **Triển khai Cloud Production:**
-  - Frontend: Vercel Edge Network (`smartrecipe-frontend.vercel.app`).
+  - Frontend: Vercel Edge Network (`smartrecipe-platform.vercel.app`).
   - Backend: Render Docker Web Service (`smartrecipe-backend.onrender.com`).
   - Database: TiDB Cloud Serverless (MySQL 8.0 protocol).
   - Cache: Upstash Redis (TLS enabled).
@@ -666,7 +666,7 @@ Dự án áp dụng mô hình tự động hóa kiểm thử và phát hành li�
     [ CD Backend - Render ]          [ CD Frontend - Vercel ]
     • Trigger Render Deploy Hook     • Auto Deploy to Vercel Edge
     • Build Docker Container Image   • Instant Cache Invalidation
-    • Health Check /actuator/health  • Live on smartrecipe-frontend.vercel.app
+    • Health Check /actuator/health  • Live on smartrecipe-platform.vercel.app
     • Live on smartrecipe-backend.onrender.com
 ```
 
